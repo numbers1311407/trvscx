@@ -6,6 +6,7 @@ var express = require('express')
   , path = require('path')
   , qs = require('qs')
   , pkg = require("../package.json")
+  , util = require("util")
 
 var app = module.exports = express()
 
@@ -51,7 +52,6 @@ app.configure(function () {
 
   app.use(express.static(path.join(__dirname, '../public')))
   app.use(express.bodyParser())
-  app.use(express.methodOverride())
   app.use(app.router)
 })
 
@@ -59,11 +59,37 @@ app.configure(function () {
 app.set('author', pkg.author.name);
 app.set('email', pkg.author.email);
 
-
 app.configure('development', function () {
   app.use(express.errorHandler())
 })
 
+var mailer = require("nodemailer");
+var transport = mailer.createTransport("SMTP", {
+  host: "email-smtp.us-east-1.amazonaws.com",
+  port: 465,
+  secureConnection: true,
+  auth: {
+    user: process.env.SES_SMTP_USERNAME,
+    pass: process.env.SES_SMTP_PASSWORD
+  }
+});
+
+app.post("/contact", function (req, res) {
+  res.send(200);
+
+  var options = {
+    from: pkg.author.email,
+    to: pkg.author.email,
+    subject: util.format("Contact from: %s <%s>", req.body.name, req.body.email),
+    text: util.format("%s\n%s\n\n%s", req.body.name, req.body.email, req.body.message)
+  }
+
+  process.nextTick(function () {
+    transport.sendMail(options, function (err, status) {
+      console.log(arguments);
+    })
+  })
+})
 
 app.get(/^\/(work|contact|resume)?$/, function (req, res) {
   res.render("index", {title: pkg.name});

@@ -14,7 +14,8 @@
     "express": "3.1.0",
     "jade": "*",
     "connect-cachify": "0.0.15",
-    "qs": "~0.6.5"
+    "qs": "~0.6.5",
+    "nodemailer": "~0.5.2"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

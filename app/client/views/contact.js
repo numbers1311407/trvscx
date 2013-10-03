@@ -9,11 +9,21 @@ module.exports = Face.extend({
 
   events: {
     "blur input": "onInputBlur",
-    "click button": "onclick"
+    "submit form": "onFormSubmit"
   },
 
-  onclick: function () {
-    var $el = $(".contact-form")
+  onFormSubmit: function (e) {
+    e.preventDefault();
+    $.ajax({
+      url: "/contact",
+      type: 'post',
+      data: this.$("form").serialize()
+    })
+    this.showThanks();
+  },
+
+  showThanks: function () {
+    var $el = $(".contact-form");
 
     $el.addClass("submitted");
     $el[0].offsetWidth;
@@ -55,7 +65,7 @@ module.exports = Face.extend({
 
   onInputInvalid: function (e) {
     e.preventDefault();
-    console.log("invalid input");
+    $(e.target).addClass("blurred");
   },
 
   resetForm: function () {
