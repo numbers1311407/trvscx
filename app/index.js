@@ -65,6 +65,6 @@ app.configure('development', function () {
 })
 
 
-app.get(/^(work|contact|resume)?/, function (req, res) {
+app.get(/^\/(work|contact|resume)?$/, function (req, res) {
   res.render("index", {title: pkg.name});
 });
