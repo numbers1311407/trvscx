@@ -37,7 +37,7 @@ exports.vendor = function (req, res, next) {
   exports.core.forEach(function (module) {
     b.require(module);
   })
-  b = shim(b, shims);
+  b = shim(b, exports.shims);
   b.bundle(function (err, src) {
     if (err) throw err;
     vendor = src;
