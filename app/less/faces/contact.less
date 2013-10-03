@@ -1,0 +1,169 @@
+.col {
+  &.contact-info {
+    width: 50%;
+  }
+  &.contact-form {
+    width: 50%;
+  }
+}
+
+ul.social-icons {
+  margin: 15px 0;
+  padding: 0;
+  list-style: none none;
+}
+
+.vcard hgroup {
+  margin-bottom: 15px;
+}
+
+li.social-icon {
+  float: left;
+  margin-left: 12px;
+  &:first-child {
+    margin-left: 0;
+  }
+  a {
+    text-decoration: none !important;
+  }
+}
+
+.nick {
+  font-size: 14px;
+  color: #888;
+  &:before {
+    content: "("
+  }
+  &:after {
+    content: ")"
+  }
+}
+
+.vcard .photo {
+  width: 42px;
+  height: 42px;
+  margin: 0 8px 0 0;
+}
+
+@col-height: 320px;
+
+.contact-info {
+  position: relative;
+  line-height: @col-height;
+}
+
+.contact-info-inner {
+  line-height: @line-height-base;
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.vcard .locality,
+.vcard .region {
+  display: inline;
+}
+
+.vcard .locality:after {
+  content: ", "
+}
+
+#contact-form .btn {
+  margin-top: 5px;
+  float: right;
+}
+
+.contact-form {
+  input, textarea {
+    font-size: 14px;
+    font-family: @font-family-base;
+  }
+  textarea {
+    height: 85px;
+  }
+}
+
+.contact-form h2 {
+  margin-bottom: 15px;
+}
+
+input:invalid, input:focus:invalid {
+  // prevent firefox from adding red border
+  -moz-box-shadow: none;
+}
+
+input.blurred:invalid {
+  border-color: #ffbbbb;
+  background-color: #fffafa;
+}
+
+
+.contact-form {
+  position: relative;
+}
+
+
+.contact-form-form {
+  opacity: 1;
+}
+
+.contact-form.sending,
+.contact-form.thanks {
+  .contact-form-form {
+    opacity: 0;
+  }
+}
+
+.contact-form.sending .sending {
+  opacity: 1;
+}
+
+.contact-form.thanks .thanks {
+  opacity: 1;
+}
+
+
+.contact-form.submitted {
+  .contact-form-thanks {
+    display: block;
+  }
+}
+
+.contact-form-form, 
+.contact-form-thanks .sending, 
+.contact-form-thanks .thanks {
+  .transition(0.4s opacity);
+}
+
+.contact-form-thanks {
+  @height: 50px;
+  font-size: 28px;
+  // display: none;
+  line-height: @height;
+  display: none;
+  .sending, .thanks {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: @col-height/2 - @height;
+    opacity: 0;
+  }
+  .sending {
+    .transition-delay(0.3s);
+  }
+  .thanks {
+    .transition-delay(0.7s);
+  }
+}
+
+
+label.input {
+  font-size: 14px;
+  color: #666;
+  > input, > textarea {
+    width: 100%;
+  }
+  span {
+    display: block;
+  }
+}

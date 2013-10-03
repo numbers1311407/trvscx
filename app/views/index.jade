@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  nav
+    ul
+      li.topLeft
+        a.nav-link(data-nav, href="/") 
+          span.nav-link
+            i.icon-home
+            span.text trvscx.com
+      li.topRight
+        a.nav-link(data-nav, href="/resume") 
+          span.nav-link
+            span.text Résumé
+            i.icon-file-text
+      li.bottomLeft
+        a.nav-link(data-nav, href="/work") 
+          span.nav-link
+            i.icon-eye-open
+            span.text Work
+      li.bottomRight
+        a.nav-link(data-nav, href="/contact")
+          span.nav-link
+            span.text Contact
+            i.icon-envelope
+  #card.card
+    #about-face.face(data-corner="topLeft")
+      include faces/about
+    #resume-face.face(data-corner="topRight")
+      include faces/resume
+    #work-face.face(data-corner="bottomLeft")
+      include faces/work
+    #contact-face.face(data-corner="bottomRight")
+      include faces/contact

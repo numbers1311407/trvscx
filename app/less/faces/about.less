@@ -1,0 +1,31 @@
+hgroup.about {
+  margin-bottom: 20px;
+  text-align: right;
+  // text-shadow: 0 2px 1px white, 0 0 0 rgba(0, 0, 0, 0.7), 0 4px 6px white; 
+  h1 {
+    font-size: 66px;
+    letter-spacing: 3px;
+  }
+  h2 {
+    padding-bottom: 5px;
+    border-bottom: 2px solid #f0f0f0;
+  }
+}
+
+img.avatar {
+  @size: 200px;
+  @border: 20px;
+
+  width: @size - @border*2;
+  height: @size - @border*2;
+  border: @border solid #e0e0e0;
+  .box-sizing(content-box);
+}
+
+.col.image {
+  width: 40%;
+}
+
+.col.desc {
+  width: 60%;
+}

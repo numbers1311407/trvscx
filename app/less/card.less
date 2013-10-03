@@ -1,0 +1,91 @@
+.card {
+  .cardbox;
+  -webkit-perspective: 850px;
+  -ms-perspective: 850px;
+  -o-perspective: 850px;
+  perspective: 850px;
+  -moz-perspective: 1250px;
+  z-index: 50;
+}
+
+.face {
+  background-color: blue;
+  #gradient.vertical(#fafafa, #f0f0f0, 40%);
+
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  // z-index: 200;
+  margin: 0;
+  border: 0;
+  overflow: hidden;
+
+  .backface-visibility(hidden);
+  .box-shadow(0 0 5px 3px rgba(0, 0, 0, 0.1));
+  .transform(rotate3d(0, 0, 0, 0deg));
+  .transition-duration(1s);
+  .transform-style(preserve-3d);
+  .transition-property(box-shadow);
+}
+
+.card .current {
+  z-index: 300;
+  display: block;
+  .transform(rotate3d(0, 0, 0, 0deg));
+}
+
+.card .topRight {
+  .transform(rotate3d(-6.5, -4, 0, 179deg));
+}
+
+.topRightHover .down {
+  .transform(rotate3d(-6.5, -4, 0, 7deg));
+  .box-shadow(10px -10px 20px rgba(0,0,0,0.1));
+}
+
+.card .bottomRight {
+  .transform(rotate3d(6.5, -4, 0, 179deg));
+}
+
+.bottomRightHover .down {
+  .transform(rotate3d(6.5, -4, 0, 7deg));
+  .box-shadow(10px 10px 20px rgba(0,0,0,0.1));
+}
+
+.card .topLeft {
+  .transform(rotate3d(-6, 4, 0, 179deg));
+}
+
+.topLeftHover .down {
+  .transform(rotate3d(-6, 4, 0, 7deg));
+  .box-shadow(-10px -10px 20px rgba(0,0,0,0.1));
+}
+
+.card .bottomLeft {
+  .transform(rotate3d(6.5, 4, 0, 179deg));
+}
+
+.bottomLeftHover .down {
+  .transform(rotate3d(6.5, 4, 0, 7deg));
+  .box-shadow(-10px 10px 20px rgba(0,0,0,0.1));
+}
+
+.down {
+  .transition-duration(0.4s) !important;
+}
+
+.static {
+  &, * {
+    .transition(none) !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .face {
+    .transition(none) !important;
+    .transform(none) !important;
+    position: static;
+  }
+}

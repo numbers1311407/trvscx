@@ -1,0 +1,61 @@
+
+// import backbone css from components
+// @import "bootstrap/less/bootstrap";
+@import "bootstrap/less/variables";
+// import own variables after bootstraps to override
+@import "variables";
+
+@import "bootstrap/less/mixins";
+@import "bootstrap/less/buttons";
+
+// Import tooltipster css from components
+@import (less) "tooltipster/css/tooltipster.css";
+
+@import "mixins";
+@import "typography";
+@import "bars";
+@import "forms";
+
+
+* { 
+  .box-sizing(border-box);
+  // -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.sr-only {
+  display: none;
+}
+
+html {
+  // font-stretch: normal;
+  // font-variant: normal;
+  vertical-align: baseline;
+}
+
+body {
+  overflow: hidden;
+  margin: 0;
+  background: #eaf0c0;
+
+  @media screen and (max-width: 767px) {
+    overflow: visible;
+  }
+}
+
+.row {
+  &:before { clear: both; }
+  .clearfix();
+}
+
+.col {
+  float: left;
+  width: 50%;
+}
+
+@import "nav";
+@import "card";
+
+@import "faces/about";
+@import "faces/resume";
+@import "faces/contact";
+@import "faces/work";

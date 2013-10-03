@@ -1,0 +1,47 @@
+.col.contact-info
+  .contact-info-inner
+    .vcard-container
+      .vcard
+        hgroup
+          img.photo(src=gravatar({s: 40}), alt=settings.author)
+          h2.heading.fn= settings.author
+          .nick numbers1311407
+        .category Web Developer
+        .locality New York
+        .region New York
+        .email
+          a(href="mailto:"+settings.email)= settings.email
+        .url.sr-only
+          a(href="http://trvscx.com") traviscx.com
+    ul.social-icons
+      li.social-icon
+        a(href="http://github.com/numbers1311407", rel="external", title="Github Profile")
+          i(class="icon-github icon-3x")
+          span.sr-only Github
+      li.social-icon
+        a(href="http://stackoverflow.com/users/178150/numbers1311407", rel="external", title="StackOverflow Profile")
+          i(class="icon-stackexchange icon-3x")
+          span.sr-only StackOverflow
+
+.col.contact-form
+  .contact-form-form
+    h2.heading Leave me a message
+    form#contact-form(method="post")
+      .form-group
+        label(for="contactName") Name
+        input#contactName.form-control(type="text", name="name", value="", placeholder="Your name", required)
+      .form-group
+        label(for="contactEmail") Email Address
+        input#contactEmail.form-control(type="email", name="email", value="", placeholder="Your email", required)
+      .form-group
+        label(for="contactMessage") Message
+        textarea#contactMessage.form-control(name="message", placeholder="Tell me what you need")
+      button#contactSubmit.btn.btn-primary(name="submit", type="submit")
+        i(aria-hidden="true", class="icon-envelope-alt")
+        span.text Send
+  .contact-form-thanks
+    .sending
+      i(class="icon-spinner icon-spin icon-large")
+      .sr-only Sending!
+    .thanks
+      .thanks-inner Thanks!

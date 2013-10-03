@@ -1,0 +1,89 @@
+//
+// Lifted from Bootstrap 3 progress-bars
+//
+
+@height: 25px;
+
+@-webkit-keyframes bar-stripes {
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
+}
+@-moz-keyframes bar-stripes {
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
+}
+@-o-keyframes bar-stripes {
+  from  { background-position: 0 0; }
+  to    { background-position: 40px 0; }
+}
+@keyframes bar-stripes {
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
+}
+
+.bars {
+  overflow: hidden;
+  height: @height;
+  margin-bottom: @height;
+  background-color: blue;
+  border-radius: 5px;
+  .box-shadow(inset 0 1px 2px rgba(0,0,0,.1));
+}
+
+// Bar of progress
+.bar {
+  float: left;
+  width: 0%;
+  height: 100%;
+  font-size: 9px;
+  line-height: @height;
+  color: #333;
+  text-align: center;
+  background-color: green;
+  .box-shadow(inset 0 -1px 0 rgba(0,0,0,.15));
+  background-size: 40px 40px;
+  .user-select(none);
+}
+
+.bar-colors(@color) {
+  background-color: @color;
+  &.bar-active {
+    #gradient > .striped(@color);
+  }
+}
+
+.bar:nth-child(3n+1) {
+  .bar-colors(#ccc);
+}
+
+.bar:nth-child(3n+2) {
+  .bar-colors(#e0e0ff);
+}
+
+.bar:nth-child(3n+3) {
+  .bar-colors(#aab);
+}
+
+// Call animation for the active one
+.bar-active {
+  -webkit-animation: bar-stripes 2s linear infinite;
+     -moz-animation: bar-stripes 2s linear infinite;
+      -ms-animation: bar-stripes 2s linear infinite;
+       -o-animation: bar-stripes 2s linear infinite;
+          animation: bar-stripes 2s linear infinite;
+}
+
+.progress-bar-tooltip {
+	border-radius: 5px; 
+	border: 1px solid #555;
+	background: #dde;
+	color: #333;
+}
+
+/* Use this next selector to style things like font-size and line-height: */
+.progress-bar-tooltip .tooltipster-content {
+	font-family: @font-family-base;
+	font-size: 14px;
+	line-height: 21px;
+	padding: 15px 15px;
+}

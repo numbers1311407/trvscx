@@ -1,0 +1,96 @@
+.transform(...) {
+  -webkit-transform: @arguments;
+  -moz-transform: @arguments;
+  -ms-transform: @arguments;
+  -o-transform: @arguments;
+  transform: @arguments;
+}
+
+.box-sizing(@boxmodel) {
+  -webkit-box-sizing: @boxmodel;
+     -moz-box-sizing: @boxmodel;
+          box-sizing: @boxmodel;
+}
+
+.transition(...) {
+  -webkit-transition: @arguments;
+     -moz-transition: @arguments;
+          transition: @arguments;
+}
+
+.box-shadow(...) {
+  -webkit-box-shadow: @arguments;
+          box-shadow: @arguments;
+}
+
+
+.backface-visibility(...) {
+  -webkit-backface-visibility: @arguments;
+  -moz-backface-visibility: @arguments;
+  -ms-backface-visibility: @arguments;
+  -o-backface-visibility: @arguments;
+  backface-visibility: @arguments;
+}
+
+.transform-style(...) {
+  -webkit-transform-style: @arguments;
+  -moz-transform-style: @arguments;
+  -ms-transform-style: @arguments;
+  -o-transform-style: @arguments;
+  transform-style: @arguments;
+}
+
+.transition-duration(@duration) {
+  -webkit-transition-duration: @duration;
+  -moz-transition-duration: @duration;
+  -o-transition-duration: @duration;
+  transition-duration: @duration;
+}
+
+.transition-delay(@duration) {
+  -webkit-transition-delay: @duration;
+  -moz-transition-delay: @duration;
+  -o-transition-delay: @duration;
+  transition-delay: @duration;
+}
+
+.transition-property(...) {
+  // NOTE: this should probably accept arguments and convert them
+  -webkit-transition-property: -webkit-transform, @arguments;
+  -o-transition-property: -o-transform, @arguments;
+  transition-property: -moz-transform, @arguments;
+  transition-property: transform, @arguments;
+}
+
+.user-select(...) {
+  -moz-user-select: @arguments;
+  -khtml-user-select: @arguments;
+  -webkit-user-select: @arguments;
+
+  /*
+    Introduced in IE 10.
+    See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+  */
+  -ms-user-select: @arguments;
+  user-select: @arguments;
+}
+
+
+.cardbox() {
+  width: 650px;
+  height: 400px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -325px;
+  margin-top: -200px;
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    margin: 0;
+    position: relative;
+    height: auto;
+    left: 0;
+    top: 0;
+  }
+}

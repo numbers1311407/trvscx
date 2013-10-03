@@ -1,0 +1,9 @@
+{
+  "name": "trvscx",
+  "private": true,
+  "devDependencies": {
+    "jquery": "~2.0.3",
+    "bootstrap": "~3.0.0",
+    "font-awesome": "~3.2.1"
+  }
+}

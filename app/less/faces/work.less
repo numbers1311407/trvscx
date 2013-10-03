@@ -1,0 +1,182 @@
+@work-bg-color: #dcdef0;
+
+.col.repos {
+  width: 25%;
+  margin-right: 3%;
+  h2 i {
+    margin-right: 0.33em;
+  }
+}
+
+.col.sites {
+  width: 72%;
+  h2 {
+    text-align: right;
+    i {
+      margin-left: 0.33em;
+    }
+  }
+}
+
+.col.repos, .col.sites {
+  font-size: 12px;
+  h2 {
+    padding-bottom: 3px;
+    border-bottom: 2px solid #f0f0f0;
+  }
+}
+
+ul.sites {
+  margin: 0;
+  padding: 0 10px;
+  list-style: none none;
+  border-radius: 10px;
+  background-color: @work-bg-color;
+  border: 1px solid #f0f0f0;
+  height: 293px;
+  overflow: hidden;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  padding: 0 10px;
+}
+
+
+li.site {
+  @real-width: 388px;
+  @text-height: 95px;
+  @active-width-percentage: 0.7;
+  @active-width: percentage(@active-width-percentage);
+  @dormant-width: (100% - @active-width) / 5;
+  @calculated-active-width: @active-width-percentage * @real-width;
+
+  width: @dormant-width;
+  height: inherit;
+  display: block;
+  float: left;
+  overflow: hidden;
+  border: 1px solid darken(@work-bg-color, 15%);
+  border-width: 0 1px 0 0;
+  position: relative;
+  &:first-child {
+    border-left-width: 1px;
+  }
+  .text {
+    height: @text-height;
+    position: absolute;
+    bottom: -@text-height - 10px;
+    .transition(bottom 0.3s);
+    // background-color: darken(@work-bg-color, 5%);
+    background-color: rgba(250, 250, 250, 0.925);
+    width: @calculated-active-width;
+    pre {
+      font-size: inherit;
+      margin: 0;
+    }
+
+    .col:first-child {
+      width: 40%;
+    }
+    .col {
+      width: 60%;
+    }
+    p {
+      padding-right: 5px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 5px;;
+      list-style-type: none;
+    }
+
+    h3 {
+      margin: 0 0 0.5em;
+      font-size: 12px;
+      padding: 8px;
+      background-color: #fff;
+      text-align: center;
+      margin-top: -10px;
+      .border-radius(10px 10px 0 0);
+      border: 1px solid @work-bg-color;
+    }
+  }
+
+  background-color: #cce;
+
+  .image {
+    border: 0;
+    display: block;
+    height: 100%;
+    opacity: 0.3;
+    .transition(opacity 0.2s);
+  }
+  .transition(width .5s ease-in-out);
+
+  &:not(.active) {
+    cursor: pointer;
+  }
+
+  &.flash .image {
+    opacity: 0.7;
+  }
+
+  &.active, &:hover {
+    .image {
+      opacity: 1;
+    }
+  }
+  &.active {
+    width: @active-width;
+    .text {
+      bottom: 0;
+    }
+  }
+}
+
+#site-fivesky .image {
+  background: url(/images/sites/fivesky.png); 
+}
+#site-e9 .image { 
+  background: url(/images/sites/e9digital.png);
+}
+#site-marketsmiths .image { 
+  background: url(/images/sites/marketsmiths.png);
+}
+#site-chellise .image { 
+  background: url(/images/sites/chellise.png);
+}
+#site-spd .image { 
+  background: url(/images/sites/springdesign.png);
+}
+#site-sugarflowershop .image { 
+  background: url(/images/sites/sugarflower.png);
+}
+
+li.repo {
+  pre {
+    margin: 0;
+  }
+
+  margin-bottom: 10px;
+
+  h3 {
+    margin: 0;
+    font-size: 13px;
+    padding: 10px 7px 5px;
+    background-color: #fff;
+    .border-radius(10px 10px 0 0);
+    border: 1px solid @work-bg-color;
+    text-align: center;
+  }
+  p {
+    background-color: @work-bg-color;
+    padding: 5px 10px 10px;
+    .border-radius(0 0 10px 10px);
+  }
+}
+
+ul.repos {
+  margin: 0;
+  padding: 0;
+  list-style: none none;
+}

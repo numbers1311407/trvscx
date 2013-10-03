@@ -1,0 +1,13 @@
+{
+  "assets": {
+    "/assets/css/screen.css": [
+      "/css/screen.css"
+    ],
+    "/assets/js/vendor.js": [
+      "/js/vendor.js"
+    ],
+    "/assets/js/bundle.js": [
+      "/js/bundle.js"
+    ]
+  }
+}
