@@ -1,4 +1,4 @@
-// var browserify = require("./lib/middleware/browserify");
+var browserify = require("./app/middleware/browserify");
 
 
 // This is the main application configuration file.  It is a Grunt
@@ -18,51 +18,49 @@ module.exports = function(grunt) {
         ' */'
     },
 
-    // clean: ["public/assets"],
+    clean: ["public/assets"],
 
-    // browserify: {
-    //   ext: {
-    //     src: [],
-    //     dest: "public/assets/js/ext.js",
-    //     options: {
-    //       transform: ["deamdify"],
-    //       shim: browserify.shims(),
-    //       alias: browserify.core
-    //     }
-    //   },
-    //   bundle: { 
-    //     src: ["app/client/production.js"],
-    //     dest: "public/assets/js/bundle.js",
-    //     options: {
-    //       transform: ["hbsfy"],
-    //       external: browserify.externals
-    //     }
-    //   }
-    //   // , options: { debug: true }
-    // },
+    browserify: {
+      vendor: {
+        src: [],
+        dest: "public/assets/js/vendor.js",
+        options: {
+          shim: browserify.shims,
+          alias: browserify.core
+        }
+      },
+      bundle: { 
+        src: ["app/client/index.js"],
+        dest: "public/assets/js/bundle.js",
+        options: {
+          external: browserify.externals
+        }
+      }
+      // , options: { debug: true }
+    },
 
-    // less: {
-    //   dist: {
-    //     options: {
-    //       paths: ["components"],
-    //       yuicompress: true
-    //     },
-    //     files: {
-    //       "public/assets/css/screen.css": "app/css/screen.less"
-    //     }
-    //   }
-    // },
+    less: {
+      dist: {
+        options: {
+          paths: ["components", "node_modules"],
+          yuicompress: true
+        },
+        files: {
+          "public/assets/css/screen.css": "app/less/screen.less"
+        }
+      }
+    },
 
-    // uglify: {
-    //   bundle: {
-    //     src: ["<banner>", "public/assets/js/bundle.js"],
-    //     dest: "public/assets/js/bundle.js"
-    //   },
-    //   vendor: {
-    //     src: ["public/assets/js/vendor.js"],
-    //     dest: "public/assets/js/vendor.js"
-    //   }
-    // },
+    uglify: {
+      bundle: {
+        src: ["<banner>", "public/assets/js/bundle.js"],
+        dest: "public/assets/js/bundle.js"
+      },
+      vendor: {
+        src: ["public/assets/js/vendor.js"],
+        dest: "public/assets/js/vendor.js"
+      }
+    },
 
     copy: {
       fonts: {
@@ -85,9 +83,10 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-symbolic-link');
-  // grunt.loadNpmTasks('grunt-contrib-uglify');
-  // grunt.loadNpmTasks('grunt-contrib-less');
-  // grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-browserify');
 
-  grunt.registerTask("dist", ["copy"]);
+  grunt.registerTask("dist", ["clean", "copy", "browserify", "less", "uglify"]);
 };

@@ -18,6 +18,8 @@ app.configure(function () {
   app.use(express.favicon(__dirname + '/../public/favicon.ico'));
   app.use(express.logger('dev'))
 
+  app.locals.pretty = true //isdev;
+
   app.use(require("./middleware/cachify")(isdev));
 
   if (isdev) {
