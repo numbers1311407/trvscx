@@ -15,7 +15,7 @@ app.configure(function () {
   app.set('port', process.env.PORT || 3000)
   app.set('views', __dirname + '/views')
   app.set('view engine', 'jade')
-  app.use(express.favicon())
+  app.use(express.favicon(__dirname + '/../public/favicon.ico'));
   app.use(express.logger('dev'))
 
   app.use(require("./middleware/cachify")(isdev));
@@ -33,7 +33,6 @@ app.configure(function () {
     app.use("/js/vendor.js", browserify.vendor);
     app.use("/js/bundle.js", browserify.bundle);
   }
-
 
   var crypto = require("crypto")
     , hash = crypto.createHash("md5")
@@ -65,5 +64,5 @@ app.configure('development', function () {
 
 
 app.get("/", function (req, res) {
-  res.render("index", {title: "trvscs.com"});
+  res.render("index", {title: pkg.name});
 });
