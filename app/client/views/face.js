@@ -51,20 +51,41 @@ var Face = module.exports = Backbone.View.extend({
     } 
     else {
       show();
-      var eltop = this.$el.offset().top
-        , shown = $("html").hasClass("faceshown")
-        , duration = shown ? 400 : 0
 
-      $("html,body").animate({scrollTop: eltop}, {
-        duration: duration,
-        easing: 'swing',
-        done: function () {
-          $("html").addClass("faceshown");
+      var eltop = this.$el.position().top
+        , shown = !$("html").hasClass("loading")
+
+      // if past loading, animate.  This will happen every time beyond
+      // the first load (meaning the loading behavior could be refactored 
+      // into a one time function)
+      if (shown) {
+        // because of the html+body animate hack (which may not be
+        // necessary) wrap the callback so it only happens once.
+        var called = false, deferredshow = function () {
+          if (called) return;
+          called = true;
+          $("html").removeClass("loading");
+          onshow();
         }
-      });
-      onshow();
-    }
+        $("html,body").animate({scrollTop: eltop}, {
+          duration: 500,
+          easing: 'swing',
+          done: deferredshow
+        });
+      } 
 
+      // Otherwise just remove loading and manually set the scrollTop.
+      // Note that this has to be nextTicked for reasons known only to
+      // the browser, or scrollTop will have no apparent effect.  It no
+      // doubt has to do with how browsers retain scroll pos on refresh.
+      else {
+        process.nextTick(function () {
+          $("html").removeClass("loading");
+          $(window).scrollTop(eltop);
+          onshow();
+        })
+      }
+    }
     return dfr.promise();
   },
 

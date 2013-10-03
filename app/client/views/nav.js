@@ -38,5 +38,3 @@ module.exports = Backbone.View.extend({
     this.$("li."+face.corner).addClass("current");
   }
 })
-
-

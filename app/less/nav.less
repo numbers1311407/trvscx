@@ -11,11 +11,22 @@ nav {
 }
 
 @media screen and (max-width: @mobile-breakpoint-max) {
+  .face:first-child {
+    margin-top: 57px;
+  }
+
   nav {
-    float: right;
-    position: relative;
-    left: -50%;
-    text-align: left;
+    position: absolute;
+    width: 100%;
+    top: 0;
+
+    .nav-inner {
+      // position: absolute;
+      float: right;
+      position: relative;
+      left: -50%;
+      text-align: left;
+    }
 
     ul {
       display: block;
