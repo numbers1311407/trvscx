@@ -22,6 +22,7 @@
   // -webkit-font-smoothing: subpixel-antialiased;
 }
 
+// screen reader only, borrowed from bootstrap
 .sr-only {
   display: none;
 }
@@ -33,17 +34,43 @@ html {
 }
 
 html.loading {
+  // everything is hidden on loading to avoid "layout FOUT" (this class 
+  // is added  and removed with javascript so... while not ideal, it
+  // should work)
   visibility: hidden;
+}
+
+section {
+  // because the mobile nav buttons align to it
+  position: relative;
+}
+
+span.text {
+  margin: 0.25em;
+}
+
+hgroup.title {
+  .nav {
+    a {
+      font-size: 20px;
+      background-color: #f6f6f6;
+      color: #999;
+      margin: 5px 5px 5px 0;
+    }
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 }
 
 body {
   overflow: hidden;
   margin: 0;
-  background: #eaf0c0;
+  // background: #eaf0c0;
+  background: #eaeaef;
 
-  @media screen and (max-width: @mobile-breakpoint) {
+  @media screen and (max-width: @screen-sm-max) {
     overflow: visible;
-    background: #f0f0f0;
   }
 }
 

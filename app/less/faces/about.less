@@ -29,3 +29,25 @@ img.avatar {
 .col.desc {
   width: 60%;
 }
+
+
+// FIXME: simply need a better small screen design for the about page
+@media screen and (max-width: @screen-xs-max) {
+  .col.image {
+    position: absolute;
+    top: 90px;
+    left: 40px;
+
+    img.avatar {
+      width: 70px;
+      height: 70px;
+      border-width: 10px;
+    }
+  }
+  .col.desc {
+    width: 100%;
+  }
+  hgroup.about h1 {
+    font-size: 60px;
+  }
+}

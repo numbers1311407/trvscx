@@ -16,7 +16,7 @@ module.exports = Face.extend({
 
   initialize: function (options) {
     Face.prototype.initialize.call(this, options);
-    this.constructor.instance = this;
+
     this.$('.tooltip').tooltipster({
       maxWidth: this.options.tooltipWidth,
       theme: this.options.tooltipTheme

@@ -1,7 +1,15 @@
 hgroup.title 
   h1 Résumé
+  .nav
+    a.btn(data-nav, href="", title="Back to Top")
+      i(class="icon-angle-up icon-large")
+    a.btn(data-nav, href="/work", title="Work")
+      i(class="icon-angle-down icon-large")
+
 .col.jobs
-  h2.heading Day jobs
+  h2.heading.left
+    i(class="icon-github")
+    | Day jobs
   ul.joblist
     li.job
       h3 Tech. Director, Senior Software Engineer

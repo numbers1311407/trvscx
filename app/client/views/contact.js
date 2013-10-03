@@ -45,9 +45,6 @@ module.exports = Face.extend({
 
   initialize: function (options) {
     Face.prototype.initialize.call(this, options);
-    this.constructor.instance = this;
-    var view = this;
-
     // this can't be bound in events, presumably because the event
     // cannot be given a chance to bubble to the form (events would
     // bind above it with delegation)

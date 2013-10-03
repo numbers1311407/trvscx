@@ -4,66 +4,9 @@ nav {
     margin: 0;
     padding: 0;
   }
-
-  span.text {
-    margin: 0.25em;
-  }
 }
 
-@media screen and (max-width: @mobile-breakpoint-max) {
-  .face:first-child {
-    margin-top: 57px;
-  }
-
-  nav {
-    position: absolute;
-    width: 100%;
-    top: 0;
-
-    .nav-inner {
-      // position: absolute;
-      float: right;
-      position: relative;
-      left: -50%;
-      text-align: left;
-    }
-
-    ul {
-      display: block;
-      position: relative;
-      left: 50%;
-    }
-
-    li {
-      padding: 10px 0;
-      float: left;
-      position: relative;
-    }
-
-    .topRight, .bottomRight {
-      i {
-        float: left;
-        line-height: 25px;
-      }
-    }
-
-    span.text {
-      margin: 0.4em;
-    }
-
-    a {
-      display: inline-block;
-      line-height: 25px;
-      padding: 5px 12px;
-      margin: 0 10px;
-      .border-radius(10px);
-      #gradient > .vertical(#f6f6f6, #e8e8e8, 40%);
-      border: 1px solid #e3e3e3;
-    }
-  }
-}
-
-@media screen and (min-width: @mobile-breakpoint) {
+@media screen and (min-width: @screen-md) {
   nav {
     .cardbox;
   }
@@ -153,5 +96,66 @@ nav {
     .user-select(none);
     .transition(all 0.35s ease);
     .backface-visibility(hidden);
+  }
+}
+
+@media screen and (max-width: @screen-sm-max) {
+  .face:first-child {
+    margin-top: 57px;
+  }
+
+  nav {
+    position: absolute;
+    width: 100%;
+    top: 0;
+
+    .nav-inner {
+      // position: absolute;
+      float: right;
+      position: relative;
+      left: -50%;
+      text-align: left;
+    }
+
+    ul {
+      display: block;
+      position: relative;
+      left: 50%;
+    }
+
+    li {
+      padding: 10px 0;
+      float: left;
+      position: relative;
+    }
+
+    .topRight, .bottomRight {
+      i {
+        float: left;
+        line-height: 25px;
+      }
+    }
+
+    span.text {
+      margin: 0.4em;
+    }
+
+    a {
+      display: inline-block;
+      line-height: 25px;
+      padding: 5px 12px;
+      margin: 0 10px;
+      .border-radius(10px);
+      #gradient > .vertical(#f6f6f6, #e8e8e8, 40%);
+      border: 1px solid #e3e3e3;
+    }
+  }
+}
+
+@media screen and (max-width: @screen-xs-max) {
+  nav a {
+    margin: 0 3px;
+    font-size: 13.5px;
+    padding: 5px 9px;
   }
 }

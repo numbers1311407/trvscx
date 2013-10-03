@@ -40,23 +40,69 @@ var Router = Backbone.Router.extend({
   contactView: function () {
     views.Contact.enqueue();
   }
+
 })
+
+
+$.fn.onTransitionEnd = function(duration, cb) {
+  var el = this.get(0)
+    , called = false
+    , buffer = 30
+
+  $(this).on($.support.transition.end, function (e) { 
+    if (e.target !== el) {
+      return;
+    }
+    $(el).off($.support.transition.end);
+    called = true;
+    cb(e);
+  });
+
+  var callback = function () { 
+    if (!called) { 
+      $(el).trigger($.support.transition.end);
+    }
+  }
+
+  setTimeout(callback, duration + buffer);
+  return this
+};
 
 
 $(function () {
   var router = new Router();
 
+  // init a copy of each of the views
+  views.init();
+
+  var lastSectionExpand = function () {
+    var h = $(window).height()
+      , sh = $("section:last-child").outerHeight(true);
+    $("section:last-child").css("margin-bottom", h - sh);
+  }
+  $(window).on("resize.lastSectionExpand", lastSectionExpand);
+  lastSectionExpand();
+
   $(document).on("click", "a[data-nav]", function (e) {
     e.preventDefault();
-    var fragment = this.getAttribute('href');
+    var history = Backbone.history;
+    var fragment = history.getFragment(this.getAttribute('href'));
+    var same = fragment === history.fragment;
+
     router.navigate(fragment);
-    Backbone.history.loadUrl(Backbone.history.getFragment(fragment));
+
+    // navigate to the same route in mobile, but not when in face
+    // transition mode (chaos)
+    if (!same || !views.Face.transitionOk()) {
+      history.loadUrl(fragment);
+    }
   })
 
   $(document).on("click", 'a[rel="external"]', function (e) {
     e.preventDefault();
     window.open(this.getAttribute('href'));
   })
+
 
   Backbone.history.start({
     pushState: true,

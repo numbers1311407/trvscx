@@ -129,10 +129,21 @@ input.blurred:invalid {
   }
 }
 
-.contact-form-form, 
-.contact-form-thanks .sending, 
-.contact-form-thanks .thanks {
-  .transition(0.4s opacity);
+.current {
+  .contact-form-form, 
+  .contact-form-thanks .sending, 
+  .contact-form-thanks .thanks {
+    .transition(0.4s opacity);
+  }
+
+  .contact-form-thanks {
+    .sending {
+      .transition-delay(0.3s);
+    }
+    .thanks {
+      .transition-delay(0.7s);
+    }
+  }
 }
 
 .contact-form-thanks {
@@ -147,12 +158,6 @@ input.blurred:invalid {
     width: 100%;
     top: @col-height/2 - @height;
     opacity: 0;
-  }
-  .sending {
-    .transition-delay(0.3s);
-  }
-  .thanks {
-    .transition-delay(0.7s);
   }
 }
 

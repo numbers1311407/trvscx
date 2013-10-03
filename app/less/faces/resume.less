@@ -4,11 +4,21 @@ ul.joblist {
   padding: 0;
 }
 
+
 .col.jobs {
   width: 60%;
   h3 {
     font-size: 18px;
     margin: 0;
+  }
+
+  h2 {
+    padding-bottom: 3px;
+    border-bottom: 2px solid #f0f0f0;
+  }
+
+  @media screen and (max-width: @screen-sm-max) {
+    width: 100%;
   }
 }
 
@@ -39,6 +49,32 @@ ul.joblist {
     border: 1px solid #aaaaff;
     text-shadow: 0.1em 0.1em #9999bb;
     color: white;
+  }
+
+  @media screen and (max-width: @screen-sm-max) {
+    width: 100%;
+    margin: 0;
+    font-size: 20px;
+    .things-love li {
+      font-size: 17px;
+    }
+
+    .things-like li {
+      font-size: 15px;
+    }
+
+    .things-tolerate li {
+      font-size: 13.5px;
+    }
+
+    li {
+      padding: 5px 8px;
+      margin-bottom: 4px;
+    }
+
+    > * {
+      margin-bottom: 25px;
+    }
   }
 }
 

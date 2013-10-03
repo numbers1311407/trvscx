@@ -1,7 +1,12 @@
 hgroup.title 
   h1 Work
+  .nav
+    a.btn(data-nav, href="/resume", title="Resume")
+      i(class="icon-angle-up icon-large")
+    a.btn(data-nav, href="/contact", title="Contact")
+      i(class="icon-angle-down icon-large")
 .col.repos
-  h2.heading
+  h2.heading.left
     i(class="icon-github")
     | On github
   ul.repos
@@ -25,7 +30,7 @@ hgroup.title
       p
         | The source for this site! Go ahead and take it!
 .col.sites
-  h2.heading
+  h2.heading.right
     | In the wild
     i(class="icon-globe")
   ul.sites

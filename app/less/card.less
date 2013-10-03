@@ -1,7 +1,5 @@
 .face {
   #gradient > .vertical(#fafafa, #f0f0f0, 40%);
-  width: 100%;
-  height: 100%;
   padding: 40px;
   margin: 0;
   border: 0;
@@ -10,18 +8,26 @@
 }
 
 .static {
-  &, * {
+  // &, * {
     .transition(none) !important;
-  }
+  // }
 }
 
-@media screen and (max-width: @mobile-breakpoint) {
+@media screen and (max-width: @screen-sm-max) {
   .face {
     padding: 90px 40px;
+    width: 570px + 40px * 2;;
+    margin: 0 auto;
   }
 }
 
-@media screen and (min-width: @mobile-breakpoint) {
+@media screen and (max-width: @screen-xs-max) {
+  .face {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: @screen-md) {
   html.csstransforms3d {
     .card {
       .cardbox;
@@ -36,6 +42,13 @@
     .face {
       position: absolute;
       top: 0;
+
+      width: 100%;
+      height: 100%;
+      margin-bottom: 0 !important;
+      // important because for small screen versions, the last face is
+      // stretched to full window height.
+      // TODO: Add a footer so this is unnecessary.
 
       .backface-visibility(hidden);
       .transform(rotate3d(0, 0, 0, 0deg));

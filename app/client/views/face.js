@@ -1,10 +1,11 @@
 var Backbone = require("backbone");
 
-var minTransitionWidth = 965;
+// Equivalent to screen-md in bootstrap
+var minTransitionWidth = 992;
 
 // transition at all? if no 3d transforms, no
 var transition = function () {
-  return !!Modernizr.csstransforms3d && $(window).width() > minTransitionWidth;
+  return !!Modernizr.csstransforms3d && $(window).width() >= minTransitionWidth;
 }
 
 // transition duration, must match the CSS
@@ -13,6 +14,7 @@ var transitionDuration = 1000;
 var Face = module.exports = Backbone.View.extend({
   initialize: function (options) {
     this.corner = this.$el.data("corner");
+    this.constructor.instance = this;
   },
 
   show: function ($hide) {
@@ -45,9 +47,7 @@ var Face = module.exports = Backbone.View.extend({
     if (transition()) {
       $("html").removeClass("loading");
       process.nextTick(function () {
-        show()
-          .one($.support.transition.end, onshow)
-          .emulateTransitionEnd(transitionDuration + 50)
+        show().onTransitionEnd(transitionDuration, onshow)
       })
     } 
     else {
@@ -111,8 +111,7 @@ var Face = module.exports = Backbone.View.extend({
 
     if (transition()) {
       hide()
-        .one($.support.transition.end, onhide)
-        .emulateTransitionEnd(transitionDuration + 50)
+        .onTransitionEnd(transitionDuration, onhide)
     }
     else {
       hide()
@@ -128,6 +127,10 @@ var Face = module.exports = Backbone.View.extend({
 
   onHidden: function () {}
 }, {
+
+  transitionOk: function () {
+    return transition();
+  },
 
   _q: $({}),
 
