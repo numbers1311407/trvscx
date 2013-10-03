@@ -1,5 +1,12 @@
 var Backbone = require("backbone");
 
+var minTransitionWidth = 965;
+
+// transition at all? if no 3d transforms, no
+var transition = function () {
+  return !!Modernizr.csstransforms3d && $(window).width() > minTransitionWidth;
+}
+
 // transition duration, must match the CSS
 var transitionDuration = 1000;
 
@@ -19,24 +26,33 @@ var Face = module.exports = Backbone.View.extend({
       dfr.resolve();
     }
 
-    // FIXME change thing so this never needs to happen.  The page should
-    // always init with a visibile page.
     if (!$hide) {
       $(".face").not(self.$el).each(function () {
         $(this).addClass("static "+getOppositeCorner(this.getAttribute("data-corner")));
       });
     }
+
     this.onShow();
     Backbone.trigger("show:face", self);
 
-    process.nextTick(function () {
+    var show = function () {
       if ($hide) $hide.hide(self);
-      $el
+      return $el
         .addClass('current')
-        .removeClass('bottomRight topRight bottomLeft topLeft static')
-        .one($.support.transition.end, onshow)
-        .emulateTransitionEnd(transitionDuration + 50)
-    })
+        .removeClass('bottomRight topRight bottomLeft topLeft static');
+    }
+
+    if (transition()) {
+      process.nextTick(function () {
+        show()
+          .one($.support.transition.end, onshow)
+          .emulateTransitionEnd(transitionDuration + 50)
+      })
+    } 
+    else {
+      show();
+      onshow();
+    }
 
     return dfr.promise();
   },
@@ -44,20 +60,31 @@ var Face = module.exports = Backbone.View.extend({
   hide: function ($show) {
     var hideCorner = $show.corner
       , resetCorner = getOppositeCorner(this.corner)
+      , self = this
 
     var onhide = function () {
-      this.$el.removeClass(hideCorner).addClass(resetCorner+" static");
-      this.onHidden();
-    }.bind(this)
+      self.$el.removeClass(hideCorner).addClass(resetCorner+" static");
+      self.onHidden();
+    }
+
+    var hide = function () {
+      return self.$el
+        .removeClass('current topLeftHover topRightHover bottomLeftHover bottomRightHover down')
+        .addClass(hideCorner)
+    }
 
     this.onHide();
     Backbone.trigger("hide:face", this);
 
-    this.$el
-      .removeClass('current topLeftHover topRightHover bottomLeftHover bottomRightHover down')
-      .addClass(hideCorner)
-      .one($.support.transition.end, onhide)
-      .emulateTransitionEnd(transitionDuration + 50)
+    if (transition()) {
+      hide()
+        .one($.support.transition.end, onhide)
+        .emulateTransitionEnd(transitionDuration + 50)
+    }
+    else {
+      hide()
+      onhide();
+    }
   },
 
   onShow: function () {},
