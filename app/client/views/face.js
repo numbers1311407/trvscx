@@ -43,6 +43,7 @@ var Face = module.exports = Backbone.View.extend({
     }
 
     if (transition()) {
+      $("html").removeClass("loading");
       process.nextTick(function () {
         show()
           .one($.support.transition.end, onshow)
