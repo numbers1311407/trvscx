@@ -48,7 +48,9 @@ $(function () {
 
   $(document).on("click", "a[data-nav]", function (e) {
     e.preventDefault();
-    router.navigate(this.getAttribute('href'), {trigger: true});
+    var fragment = this.getAttribute('href');
+    router.navigate(fragment);
+    Backbone.history.loadUrl(Backbone.history.getFragment(fragment));
   })
 
   $(document).on("click", 'a[rel="external"]', function (e) {
