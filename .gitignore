@@ -1,4 +1,5 @@
 node_modules
 components
 public/assets
+public/css
 *.swp
