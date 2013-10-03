@@ -7,7 +7,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app",
+    "start": "node index",
     "test": "grunt test"
   },
   "dependencies": {
