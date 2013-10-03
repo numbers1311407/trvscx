@@ -51,6 +51,17 @@ var Face = module.exports = Backbone.View.extend({
     } 
     else {
       show();
+      var eltop = this.$el.offset().top
+        , shown = $("html").hasClass("faceshown")
+        , duration = shown ? 400 : 0
+
+      $("html,body").animate({scrollTop: eltop}, {
+        duration: duration,
+        easing: 'swing',
+        done: function () {
+          $("html").addClass("faceshown");
+        }
+      });
       onshow();
     }
 
