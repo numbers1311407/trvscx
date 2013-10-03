@@ -22,7 +22,7 @@ var Router = Backbone.Router.extend({
   },
 
   aboutView: function () {
-    this._showFace("#about");
+    views.About.enqueue();
   },
 
   resumeView: function () {
@@ -35,10 +35,6 @@ var Router = Backbone.Router.extend({
 
   contactView: function () {
     views.Contact.enqueue();
-  },
-
-  _showFace: function(id) {
-    views.Face.enqueue(id);
   }
 })
 
@@ -57,6 +53,6 @@ $(function () {
   })
 
   Backbone.history.start({
-    // pushState: true
+    pushState: true
   });
 });
