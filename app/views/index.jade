@@ -24,12 +24,12 @@ block content
             span.nav-link
               span.text Contact
               i.icon-envelope
-  #card.card
-    #about-face.face(data-corner="topLeft")
+  #card.card(role="main")
+    section#about-face.face(data-corner="topLeft")
       include faces/about
-    #resume-face.face(data-corner="topRight")
+    section#resume-face.face(data-corner="topRight")
       include faces/resume
-    #work-face.face(data-corner="bottomLeft")
+    section#work-face.face(data-corner="bottomLeft")
       include faces/work
-    #contact-face.face(data-corner="bottomRight")
+    section#contact-face.face(data-corner="bottomRight")
       include faces/contact
