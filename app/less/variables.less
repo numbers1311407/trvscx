@@ -33,6 +33,10 @@
 @headings-small-color: #666;
 
 @mobile-breakpoint: 966px;
+// NOTE for whatever reason, media queries weren't working when calculating
+// the max via subtracting 1 from the min.  The property seemed to be the
+// correct value, but the media query would not work.
+@mobile-breakpoint-max: 965px;
 
 
 // Bootstrap Forms
