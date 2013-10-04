@@ -95,6 +95,10 @@ $(function () {
     // transition mode (chaos)
     if (!same || !views.Face.transitionOk()) {
       history.loadUrl(fragment);
+
+      if ("undefined" !== typeof ga) {
+        ga('send', 'pageview', fragment.replace(/^([^\/]|$)/, '/$1'));
+      }
     }
   })
 
