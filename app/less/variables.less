@@ -5,10 +5,14 @@
 @mustard:               #FCBB15;
 @dark-green:  #006400;
 @dark-slate-blue: #483D8B;
+@maroonish: #882200;
+@khaki: #F0e68c;
 
 @brand-primary:               @dark-green;
 @brand-primary:               @mustard;
-// @brand-primary:               @dark-slate-blue;
+@brand-primary:               #b8860b;
+@brand-primary:               #008080;
+@brand-primary:               #daa520;
 
 @brand-light:            lighten(@brand-primary, 12.5%);
 @brand-lighter:          lighten(@brand-primary, 30%);
@@ -20,16 +24,19 @@
 @brand-danger:          #d9534f;
 @brand-info:            #5bc0de;
 
-@bg-color:                 #f0f0f0;
-// @bg-color:                 #222;
+@bg-color:                 @khaki;
+// @bg-color:                 darken(@brand-primary, 30%);
 
 @base-bg-color:            contrast(@brand-primary, #1f1f1f, #ccc);
 @text-color:          contrast(@bg-color, mix(@brand-primary, #333, 15%), mix(@brand-primary, #fff, 15%));
-@brand-text-color:    contrast(@brand-primary, mix(@brand-primary, #333, 15%), mix(@brand-primary, #fff, 15%));
-@brand-text-shadow:   .1em .1em .2em fadeout(@brand-primary, 10%);
+@brand-text-color:    #ffffcc;
+// @brand-text-color:    contrast(@brand-primary, mix(@brand-primary, #333, 15%), mix(@brand-primary, #fff, 15%));
+@brand-text-shadow: .15em .15em .1em rgba(0,0,0,0.7);
+@brand-text-shadow:   .15em .15em .15em fadeout(contrast(@brand-text-color, mix(@brand-primary, #000, 50%), mix(@brand-primary, #fff, 50%)), 0%);
 
-@link-color:      darken(@brand-primary, 10%);
-@link-hover-color:            overlay(@link-color, #ccc);
+
+@link-color:       @maroonish;
+@link-hover-color: lighten(@link-color, 20%);
 
 
 @headings-color:                         @text-color;
@@ -44,8 +51,8 @@
 
 // Card
 // ----------------------
-@card-overlay-start: fadeout(lighten(@bg-color, 20%), 20%);
-@card-overlay-end: fadeout(@bg-color, 20%);
+@card-overlay-start: fadeout(lighten(@bg-color, 20%), 30%);
+@card-overlay-end: fadeout(@bg-color, 40%);
 @card-overlay-bg: url(/images/textures/card2.jpg);
 
 // Misc
@@ -57,8 +64,8 @@
 
 // Nav
 // ----------------------
-@nav-color:                             @link-color;
-@nav-current-color:       lighten(@link-color, 15%);
+@nav-color:                             @brand-primary;
+@nav-current-color:       fadeout(lighten(@nav-color, 15%), 70%);
 
 // Resume
 // ----------------------
@@ -72,10 +79,10 @@
 
 // Work
 // ----------------------
-@site-bg-color:                            @brand-darker;
-@sites-bg-color:                            @brand-light;
-@sites-text-bg:                fadeout(@brand-dark, 10%);
-@sites-header-bg-color:                #fff;
+@site-bg-color:                            @brand-dark;
+@sites-bg-color:                            @brand-primary;
+@sites-text-bg:                fadeout(@brand-primary, 8%);
+@sites-header-bg-color:                #fffaf0;
 @sites-text-color:                     @brand-text-color;
 
 // Form
@@ -93,12 +100,17 @@
 @line-height-base: 1.333;
 @line-height-computed: floor(@font-size-base * @line-height-base);
 
+
+@face-padding: 40px;
+@face-sm-vertical-padding: 90px;
+@face-xs-horizontal-padding: 20px;
+
 @headings-font-family: Fjalla One, sans-serif;
 @headings-font-weight: 400;
 @headings-line-height: 1.1;
 
 @padding-base-vertical:          6px;
-@padding-base-horizontal:        12px;
+@padding-base-horizontal:        8px;
 @border-radius-base: 5px;
 
 
@@ -109,9 +121,9 @@
 
 @input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
 @input-color:                    lighten(@text-color, 2%);
-@input-border:                   @brand-lighter;
+@input-border:                   @brand-light;
 @input-border-radius:            @border-radius-base;
-@input-bg:                       darken(@bg-color, 1%);
+@input-bg:                       mix(@brand-lighter, #fff);
 
 
 // Bootstrap Buttons

@@ -27,23 +27,48 @@ img.avatar {
 }
 
 
-// FIXME: simply need a better small screen design for the about page
-@media screen and (max-width: @screen-xs-max) {
+.avatar-title(@size, @border-width, @h1-font-size, @h2-font-size) {
   .col.image {
-    position: absolute;
-    top: 90px;
-    left: 40px;
+    top: @face-sm-vertical-padding;
 
     img.avatar {
-      width: 70px;
-      height: 70px;
-      border-width: 10px;
+      width: @size;
+      height: @size;
+      border-width: @border-width;
     }
   }
+  hgroup.about {
+    h1 {
+      font-size: @h1-font-size;
+    }
+    h2 {
+      font-size: @h2-font-size;
+    }
+    h1, h2 {
+      padding-right: @size + @border-width * 3;
+    }
+  }
+}
+
+
+@media screen and (max-width: @screen-xs-max) {
+  .avatar-title(70px, 10px, 60px, 24px);
   .col.desc {
     width: 100%;
   }
+  .col.image {
+    right: @face-padding;
+    position: absolute;
+    width: auto;
+  }
+}
+
+@media screen and (max-width: (@screen-xs - 1)) {
+  .avatar-title(60px, 8px, 50px, 21px);
   hgroup.about h1 {
-    font-size: 60px;
+    letter-spacing: 2px;
+  }
+  .col.image {
+    right: @face-xs-horizontal-padding;
   }
 }

@@ -23,8 +23,10 @@ ul.joblist {
 
 .col.skills {
   width: 35%;
-  font-size: 10.5px;
   margin-left: 5%;
+  h2 {
+    display: none;
+  }
 
   h4 {
     font-size: 15px;
@@ -50,7 +52,15 @@ ul.joblist {
   @media screen and (max-width: @screen-sm-max) {
     width: 100%;
     margin: 0;
-    font-size: 20px;
+
+    h2 {
+      margin-top: 15px;
+      display: block;
+    }
+
+    .things {
+      font-size: 20px;
+    }
     .things-love li {
       font-size: 17px;
     }

@@ -8,7 +8,7 @@
 }
 
 .face {
-  padding: 40px;
+  padding: @face-padding;
   margin: 0;
   border: 0;
   overflow: hidden;
@@ -19,8 +19,8 @@
 
 @media screen and (max-width: @screen-sm-max) {
   .face {
-    padding: 90px 40px;
-    width: 570px + 40px * 2;;
+    padding: @face-sm-vertical-padding @face-padding;
+    width: 570px + 40px * 2;
     margin: 0 auto;
   }
 }
@@ -28,6 +28,13 @@
 @media screen and (max-width: @screen-xs-max) {
   .face {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: (@screen-xs - 1)) {
+  .face {
+    padding-left: @face-xs-horizontal-padding;
+    padding-right: @face-xs-horizontal-padding;
   }
 }
 
