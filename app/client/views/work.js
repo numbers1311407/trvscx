@@ -5,10 +5,10 @@ module.exports = Face.extend({
   el: "#work-face",
 
   events: {
-    "click li.site:not(.active)": "onSiteClick"
+    "click li.site:not(.active)": "onClickSite"
   },
 
-  onSiteClick: function (e) {
+  onClickSite: function (e) {
     this.$("li.site.active").removeClass("active");
     return $(e.currentTarget).addClass("active");
   },

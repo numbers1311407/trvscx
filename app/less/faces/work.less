@@ -51,13 +51,14 @@ li.site {
   &:first-child {
     border-left-width: 1px;
   }
+
   .text {
     height: @text-height;
     position: absolute;
     bottom: -@text-height - 10px;
     .transition(bottom 0.3s);
-    background: @sites-text-bg;
     width: @calculated-active-width;
+    background: @sites-text-bg;
     color: @sites-text-color;
     pre {
       font-size: inherit;
@@ -159,11 +160,11 @@ li.repo {
     padding: 10px 7px 5px;
     background-color: @sites-header-bg-color;
     .border-radius(10px 10px 0 0);
-    border: 1px solid @sites-bg-color;
+    border: 1px solid @sites-repo-bg-color;
     text-align: center;
   }
   p {
-    background-color: @sites-bg-color;
+    background-color: @sites-repo-bg-color;
     padding: 5px 10px 10px;
     .border-radius(0 0 10px 10px);
     color: @brand-text-color;

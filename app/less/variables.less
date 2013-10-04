@@ -5,19 +5,20 @@
 @mustard:               #FCBB15;
 @dark-green:  #006400;
 @dark-slate-blue: #483D8B;
-@maroonish: #882200;
+@maroonish: #881f00;
 @khaki: #F0e68c;
 
-@brand-primary:               @dark-green;
-@brand-primary:               @mustard;
-@brand-primary:               #b8860b;
-@brand-primary:               #008080;
-@brand-primary:               #daa520;
+//@brand-primary:               @dark-green;
+//@brand-primary:               #b8860b;
+//@brand-primary:               #008080;
+@brand-primary:               #eac502;
 
-@brand-light:            lighten(@brand-primary, 12.5%);
-@brand-lighter:          lighten(@brand-primary, 30%);
-@brand-dark:              darken(@brand-primary, 12.5%);
-@brand-darker:            darken(@brand-primary, 30%);
+@brand-primary:               mix(darken(@mustard, 10%), #ff0, 60%);
+
+@brand-light:           mix(@brand-primary, #ffc, 70%);
+@brand-lighter:         mix(@brand-primary, #ffc, 40%);
+@brand-dark:            mix(@brand-primary, #c00, 70%);
+@brand-darker:          mix(@brand-primary, #c00, 40%);
 
 @brand-success:         #5cb85c;
 @brand-warning:         #f0ad4e;
@@ -79,11 +80,13 @@
 
 // Work
 // ----------------------
-@site-bg-color:                            @brand-dark;
-@sites-bg-color:                            @brand-primary;
-@sites-text-bg:                fadeout(@brand-primary, 8%);
+@site-bg-color:                            @brand-light;
+@sites-bg-color:                            @brand-dark;
+@sites-text-bg:                fadeout(@brand-dark, 8%);
 @sites-header-bg-color:                #fffaf0;
 @sites-text-color:                     @brand-text-color;
+@sites-repo-bg-color: @brand-darker;
+
 
 // Form
 // ----------------------
