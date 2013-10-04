@@ -30,7 +30,7 @@ li.social-icon {
 
 .nick {
   font-size: 14px;
-  color: #888;
+  color: lighten(@text-color, 25%);
   &:before {
     content: "("
   }
@@ -86,17 +86,6 @@ li.social-icon {
 .contact-form h2 {
   margin-bottom: 15px;
 }
-
-input:invalid, input:focus:invalid {
-  // prevent firefox from adding red border
-  -moz-box-shadow: none;
-}
-
-input.blurred:invalid {
-  border-color: #ff6666;
-  background-color: #fff3f3;
-}
-
 
 .contact-form {
   position: relative;
@@ -164,7 +153,6 @@ input.blurred:invalid {
 
 label.input {
   font-size: 14px;
-  color: #666;
   > input, > textarea {
     width: 100%;
   }

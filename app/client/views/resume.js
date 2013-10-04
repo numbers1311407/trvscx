@@ -6,7 +6,7 @@ module.exports = Face.extend({
 
   options: {
     tooltipWidth: 300,
-    tooltipTheme: "progress-bar-tooltip"
+    tooltipTheme: "site-tooltip"
   },
 
   events: {

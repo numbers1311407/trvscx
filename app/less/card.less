@@ -1,16 +1,20 @@
+.gradient-with-layer(@start-color, @end-color, @bg, @start-percent: 0%, @end-percent: 100%) {
+  background-image: -webkit-gradient(linear, left @start-percent, left @end-percent, from(@start-color), to(@end-color)), @bg; // Safari 4+, Chrome 2+
+  background-image: -webkit-linear-gradient(top, @start-color, @start-percent, @end-color, @end-percent), @bg; // Safari 5.1+, Chrome 10+
+  background-image: -moz-linear-gradient(top, @start-color @start-percent, @end-color @end-percent), @bg; // FF 3.6+
+  background-image: linear-gradient(to bottom, @start-color @start-percent, @end-color @end-percent), @bg; // Standard, IE10
+  background-repeat: repeat-x;
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@start-color),argb(@end-color))); // IE9 and down
+}
+
 .face {
-  #gradient > .vertical(#fafafa, #f0f0f0, 40%);
   padding: 40px;
   margin: 0;
   border: 0;
   overflow: hidden;
-  .box-shadow(0 0 5px 3px rgba(0, 0, 0, 0.1));
-}
+  // .box-shadow(0 0 5px 3px rgba(0, 0, 0, 0.1));
 
-.static {
-  // &, * {
-    .transition(none) !important;
-  // }
+  .gradient-with-layer(@card-overlay-start; @card-overlay-end; @card-overlay-bg);
 }
 
 @media screen and (max-width: @screen-sm-max) {

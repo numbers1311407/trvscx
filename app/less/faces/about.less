@@ -6,10 +6,6 @@ hgroup.about {
     font-size: 66px;
     letter-spacing: 3px;
   }
-  h2 {
-    padding-bottom: 5px;
-    border-bottom: 2px solid #f0f0f0;
-  }
 }
 
 img.avatar {
@@ -18,7 +14,7 @@ img.avatar {
 
   width: @size - @border*2;
   height: @size - @border*2;
-  border: @border solid #e0e0e0;
+  border: @border solid @avatar-border-color;
   .box-sizing(content-box);
 }
 

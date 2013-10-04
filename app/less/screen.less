@@ -15,7 +15,10 @@
 @import "typography";
 @import "bars";
 @import "forms";
-
+@import "nav";
+@import "card";
+@import "titles";
+@import "tooltips";
 
 * { 
   .box-sizing(border-box);
@@ -40,6 +43,19 @@ html.loading {
   visibility: hidden;
 }
 
+body {
+  overflow: hidden;
+  margin: 0;
+  // background: #eaeaef;
+  // background: url(/images/textures/wood1.jpg);
+  // .full-screen-background("/images/textures/wood4.jpg");
+  background-color: @base-bg-color;
+
+  @media screen and (max-width: @screen-sm-max) {
+    overflow: visible;
+  }
+}
+
 section {
   // because the mobile nav buttons align to it
   position: relative;
@@ -49,29 +65,9 @@ span.text {
   margin: 0.25em;
 }
 
-hgroup.title {
-  .nav {
-    a {
-      font-size: 20px;
-      background-color: #f6f6f6;
-      color: #999;
-      margin: 5px 5px 5px 0;
-    }
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-}
-
-body {
-  overflow: hidden;
-  margin: 0;
-  // background: #eaf0c0;
-  background: #eaeaef;
-
-  @media screen and (max-width: @screen-sm-max) {
-    overflow: visible;
-  }
+.underlined {
+  padding-bottom: 4px;
+  border-bottom: 2px solid @underline-color;
 }
 
 .row {
@@ -84,9 +80,9 @@ body {
   width: 50%;
 }
 
-@import "nav";
-@import "card";
-@import "titles";
+.static {
+  .transition(none) !important;
+}
 
 @import "faces/about";
 @import "faces/resume";

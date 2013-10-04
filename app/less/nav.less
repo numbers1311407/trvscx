@@ -69,7 +69,7 @@ nav {
     span.nav-link {
       font-size: 56px !important;
       opacity: 0.25;
-      color: #001166;
+      color: @nav-current-color;
       cursor: default;
     }
 
@@ -87,10 +87,9 @@ nav {
   }
 
   span.nav-link {
-    // background-color: rgba(0,0,255,0.1);
     opacity: 1;
     display: block;
-    color: #666;
+    color: @nav-color;
     font-size: 20px;
     line-height: 50px;
     .user-select(none);

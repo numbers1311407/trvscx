@@ -3,6 +3,7 @@
 // --------------------------------------------------
 
 label {
+  color: @label-color;
   display: inline-block;
   margin-bottom: 2px;
   font-size: small;
@@ -86,3 +87,15 @@ textarea {
   margin-bottom: 10px;
   color: lighten(@text-color, 25%); // lighten the text some for contrast
 }
+
+
+input:invalid, input:focus:invalid {
+  // prevent firefox from adding red border
+  -moz-box-shadow: none;
+}
+
+input.blurred:invalid {
+  border-color: @input-error-color;
+  background: @input-error-bg;
+}
+

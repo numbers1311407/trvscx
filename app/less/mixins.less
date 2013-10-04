@@ -75,6 +75,14 @@
   user-select: @arguments;
 }
 
+.full-screen-background(@image) {
+  background: url(@image) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 
 .cardbox() {
   position: absolute;
@@ -85,3 +93,4 @@
   margin-top: -200px;
   margin-left: -325px;
 }
+

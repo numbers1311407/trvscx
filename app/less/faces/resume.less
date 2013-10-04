@@ -4,17 +4,12 @@ ul.joblist {
   padding: 0;
 }
 
-
 .col.jobs {
   width: 60%;
+
   h3 {
     font-size: 18px;
     margin: 0;
-  }
-
-  h2 {
-    padding-bottom: 3px;
-    border-bottom: 2px solid #f0f0f0;
   }
 
   @media screen and (max-width: @screen-sm-max) {
@@ -46,9 +41,10 @@ ul.joblist {
     padding: 3px 7px;
     margin: 1px;
     .border-radius(5px);
-    border: 1px solid #aaaaff;
-    text-shadow: 0.1em 0.1em #9999bb;
-    color: white;
+    border: 1px solid @skills-border-color;
+    color: @skills-color;
+    font-weight: bold;
+    text-shadow: @brand-text-shadow;
   }
 
   @media screen and (max-width: @screen-sm-max) {
@@ -79,18 +75,18 @@ ul.joblist {
 }
 
 .things-love li {
-  background-color: darken(#9999cc, 15%);
+  background-color: @skills-bg;
   font-size: 12px;
 }
 
 .things-like li {
-  background-color: darken(#9999cc, 10%);
-  font-size: 10.5px;
+  background-color: darken(@skills-bg, 10%);
+  font-size: 12px;
 }
 
 .things-tolerate li {
-  background-color: #9999cc;
-  font-size: 9.5px;
+  background-color: darken(@skills-bg, 15%);
+  font-size: 12px;
 }
 
 .job .where:after {
@@ -98,7 +94,7 @@ ul.joblist {
 }
 
 .job .when {
-  color: #999;
+  color: lighten(@text-color, 10%);
   font-size: small;
 }
 

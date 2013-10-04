@@ -1,4 +1,3 @@
-@work-bg-color: #dcdef0;
 
 .col.repos {
   width: 25%;
@@ -14,10 +13,6 @@
 
 .col.repos, .col.sites {
   font-size: 12px;
-  h2 {
-    padding-bottom: 3px;
-    border-bottom: 2px solid #f0f0f0;
-  }
 }
 
 ul.sites {
@@ -25,8 +20,8 @@ ul.sites {
   padding: 0 10px;
   list-style: none none;
   border-radius: 10px;
-  background-color: @work-bg-color;
-  border: 1px solid #f0f0f0;
+  background: @sites-bg-color;
+  border: 1px solid @sites-bg-color;
   height: 293px;
   overflow: hidden;
   -moz-background-clip: padding;
@@ -48,9 +43,11 @@ li.site {
   display: block;
   float: left;
   overflow: hidden;
-  border: 1px solid darken(@work-bg-color, 15%);
+  border: 1px solid darken(@sites-bg-color, 15%);
   border-width: 0 1px 0 0;
   position: relative;
+  background-color: @site-bg-color;
+
   &:first-child {
     border-left-width: 1px;
   }
@@ -59,9 +56,9 @@ li.site {
     position: absolute;
     bottom: -@text-height - 10px;
     .transition(bottom 0.3s);
-    // background-color: darken(@work-bg-color, 5%);
-    background-color: rgba(250, 250, 250, 0.925);
+    background: @sites-text-bg;
     width: @calculated-active-width;
+    color: @sites-text-color;
     pre {
       font-size: inherit;
       margin: 0;
@@ -72,6 +69,9 @@ li.site {
     }
     .col {
       width: 60%;
+    }
+    .row {
+       text-shadow: @brand-text-shadow;
     }
     p {
       padding-right: 5px;
@@ -87,15 +87,13 @@ li.site {
       margin: 0 0 0.5em;
       font-size: 12px;
       padding: 8px;
-      background-color: #fff;
+      background: @sites-header-bg-color;
       text-align: center;
       margin-top: -10px;
       .border-radius(10px 10px 0 0);
-      border: 1px solid @work-bg-color;
+      border: 1px solid @sites-bg-color;
     }
   }
-
-  background-color: #cce;
 
   .image {
     border: 0;
@@ -157,15 +155,16 @@ li.repo {
     margin: 0;
     font-size: 13px;
     padding: 10px 7px 5px;
-    background-color: #fff;
+    background-color: @sites-header-bg-color;
     .border-radius(10px 10px 0 0);
-    border: 1px solid @work-bg-color;
+    border: 1px solid @sites-bg-color;
     text-align: center;
   }
   p {
-    background-color: @work-bg-color;
+    background-color: @sites-bg-color;
     padding: 5px 10px 10px;
     .border-radius(0 0 10px 10px);
+    color: @brand-text-color;
   }
 }
 

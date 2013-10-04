@@ -1,16 +1,93 @@
 // Colors
 // ----------------------
-@brand-primary:         #428bca;
+@gray:                     #666;
+@gray-light:               #999;
+@mustard:               #FCBB15;
+@dark-green:  #006400;
+@dark-slate-blue: #483D8B;
+
+@brand-primary:               @dark-green;
+@brand-primary:               @mustard;
+// @brand-primary:               @dark-slate-blue;
+
+@brand-light:            lighten(@brand-primary, 12.5%);
+@brand-lighter:          lighten(@brand-primary, 30%);
+@brand-dark:              darken(@brand-primary, 12.5%);
+@brand-darker:            darken(@brand-primary, 30%);
+
 @brand-success:         #5cb85c;
 @brand-warning:         #f0ad4e;
 @brand-danger:          #d9534f;
 @brand-info:            #5bc0de;
 
-@gray:                     #666;
-@gray-light:               #999;
+@bg-color:                 #f0f0f0;
+// @bg-color:                 #222;
 
-// Variables
+@base-bg-color:            contrast(@brand-primary, #1f1f1f, #ccc);
+@text-color:          contrast(@bg-color, mix(@brand-primary, #333, 15%), mix(@brand-primary, #fff, 15%));
+@brand-text-color:    contrast(@brand-primary, mix(@brand-primary, #333, 15%), mix(@brand-primary, #fff, 15%));
+@brand-text-shadow:   .1em .1em .2em fadeout(@brand-primary, 10%);
+
+@link-color:      @brand-primary;
+@link-hover-color:            overlay(@link-color, #ccc);
+
+
+@headings-color:                         @text-color;
+@headings-small-color:   lighten(@headings-color, 10%);
+
+
+// Tooltips
 // ----------------------
+@tooltip-color:                         @text-color;
+@tooltip-bg:                         @brand-lighter;
+@tooltip-border-color:                  @brand-dark;
+
+// Card
+// ----------------------
+@card-overlay-start: fadeout(lighten(@bg-color, 20%), 20%);
+@card-overlay-end: fadeout(@bg-color, 20%);
+@card-overlay-bg: url(/images/textures/card2.jpg);
+
+// Misc
+// ----------------------
+@underline-color:                    @brand-primary;
+@avatar-border-color:                  @brand-light;
+@nav-arrow-bg:                              #f6f6f6;
+@nav-arrow-fg:                                 #999;
+
+// Nav
+// ----------------------
+@nav-color:                             @link-color;
+@nav-current-color:       lighten(@link-color, 15%);
+
+// Resume
+// ----------------------
+@skills-bg:                          @brand-primary;
+@skills-border-color:                @brand-lighter;
+@skills-color:                    @brand-text-color;
+@bar-1:                                 @brand-dark;
+@bar-2:                              @brand-primary;
+@bar-3:                                @brand-light;
+@bar-text:                        @brand-text-color;
+
+// Work
+// ----------------------
+@site-bg-color:                            @brand-darker;
+@sites-bg-color:                            @brand-light;
+@sites-text-bg:                fadeout(@brand-dark, 10%);
+@sites-header-bg-color:                #fff;
+@sites-text-color:                     @brand-text-color;
+
+// Form
+// ----------------------
+@input-error-color: #ff6666;
+@input-error-bg: #fff3f3;
+@label-color: @text-color;
+
+
+// Other
+// ----------------------
+
 @font-family-base: Oxygen, sans-serif;
 @font-size-base: 16px;
 @line-height-base: 1.333;
@@ -24,41 +101,17 @@
 @padding-base-horizontal:        12px;
 @border-radius-base: 5px;
 
-@text-color: #555;
-
-@link-color: #333399;
-@link-hover-color: #6666ff;
-
-@headings-color: @text-color;
-@headings-small-color: #666;
-
 
 // Bootstrap Forms
 // -------------------------
-@state-warning-text:             #c09853;
-@state-warning-bg:               #fcf8e3;
-@state-warning-border:           darken(spin(@state-warning-bg, -10), 3%);
-
-@state-danger-text:              #b94a48;
-@state-danger-bg:                #f2dede;
-@state-danger-border:            darken(spin(@state-danger-bg, -10), 3%);
-
-@state-success-text:             #468847;
-@state-success-bg:               #dff0d8;
-@state-success-border:           darken(spin(@state-success-bg, -10), 5%);
-
-@state-info-text:                #3a87ad;
-@state-info-bg:                  #d9edf7;
-@state-info-border:              darken(spin(@state-info-bg, -10), 7%);
-
-
-@input-color-placeholder:        #999;;
+@input-color-placeholder:        mix(@text-color, @brand-text-color, 40%);
 @input-border-focus:             #66afe9;
-@input-height-base: (@line-height-computed + (@padding-base-vertical * 2) + 2);
-@input-color: #666;
-@input-border: #ccc;
-@input-border-radius: @border-radius-base;
-@input-bg: #fff;
+
+@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
+@input-color:                    lighten(@text-color, 2%);
+@input-border:                   @brand-lighter;
+@input-border-radius:            @border-radius-base;
+@input-bg:                       darken(@bg-color, 1%);
 
 
 // Bootstrap Buttons
