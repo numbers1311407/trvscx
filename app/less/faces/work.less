@@ -1,3 +1,17 @@
+.small-site(@image-size) {
+  padding-left: @image-size;
+  .text {
+    height: @image-size;
+  }
+  .image {
+    background-size: @image-size @image-size;
+    width: @image-size;
+    height: @image-size;
+  }
+}
+
+// Col Dims
+//-----------------
 
 .col.repos {
   width: 25%;
@@ -15,138 +29,43 @@
   font-size: 12px;
 }
 
-ul.sites {
-  margin: 0;
-  padding: 0 10px;
-  list-style: none none;
-  border-radius: 10px;
-  background: @sites-bg-color;
-  border: 1px solid @sites-bg-color;
-  height: 293px;
-  overflow: hidden;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
-  padding: 0 10px;
-}
 
-
-li.site {
-  @real-width: 388px;
-  @text-height: 95px;
-  @active-width-percentage: 0.7;
-  @active-width: percentage(@active-width-percentage);
-  @dormant-width: (100% - @active-width) / 5;
-  @calculated-active-width: @active-width-percentage * @real-width;
-
-  width: @dormant-width;
-  height: inherit;
-  display: block;
-  float: left;
-  overflow: hidden;
-  border: 1px solid darken(@sites-bg-color, 15%);
-  border-width: 0 1px 0 0;
-  position: relative;
-  background-color: @site-bg-color;
-
-  &:first-child {
-    border-left-width: 1px;
-  }
-
-  .text {
-    height: @text-height;
-    position: absolute;
-    bottom: -@text-height - 10px;
-    .transition(bottom 0.3s);
-    width: @calculated-active-width;
-    background: @sites-text-bg;
-    color: @sites-text-color;
-    pre {
-      font-size: inherit;
-      margin: 0;
-    }
-
-    .col:first-child {
-      width: 40%;
-    }
-    .col {
-      width: 60%;
-    }
-    .row {
-       text-shadow: @brand-text-shadow;
-    }
-    p {
-      padding-right: 5px;
-    }
-
-    ul {
-      margin: 0;
-      padding-left: 5px;;
-      list-style-type: none;
-    }
-
-    h3 {
-      margin: 0 0 0.5em;
-      font-size: 13px;
-      font-weight: bold;
-      padding: 8px;
-      background: @sites-header-bg-color;
-      text-align: center;
-      margin-top: -10px;
-      .border-radius(10px 10px 0 0);
-      border: 1px solid @sites-bg-color;
-    }
-  }
-
-  .image {
-    border: 0;
-    display: block;
-    height: 100%;
-    opacity: 0.3;
-    .transition(opacity 0.2s);
-  }
-  .transition(width .5s ease-in-out);
-
-  &:not(.active) {
-    cursor: pointer;
-  }
-
-  &.active, &:hover {
-    .image {
-      opacity: 1;
-    }
-  }
-  &.active {
-    width: @active-width;
-    .text {
-      bottom: 0;
-    }
-  }
-}
-
-.current .flash .image {
-  opacity: 0.7;
-}
+// Site Screencaps
+//-------------------
 
 #site-fivesky .image {
-  background: url(/images/sites/fivesky.png); 
+  background-image: url(/images/sites/fivesky.png); 
 }
 #site-e9 .image { 
-  background: url(/images/sites/e9digital.png);
+  background-image: url(/images/sites/e9digital.png);
 }
 #site-marketsmiths .image { 
-  background: url(/images/sites/marketsmiths.png);
+  background-image: url(/images/sites/marketsmiths.png);
 }
 #site-chellise .image { 
-  background: url(/images/sites/chellise.png);
+  background-image: url(/images/sites/chellise.png);
 }
 #site-spd .image { 
-  background: url(/images/sites/springdesign.png);
+  background-image: url(/images/sites/springdesign.png);
 }
 #site-sugarflowershop .image { 
-  background: url(/images/sites/sugarflower.png);
+  background-image: url(/images/sites/sugarflower.png);
+}
+
+
+// Repos Column
+// ------------------
+
+ul.repos {
+  margin: 0;
+  padding: 0;
+  list-style: none none;
 }
 
 li.repo {
+  min-height: 90px;
+
+
   pre {
     margin: 0;
   }
@@ -164,6 +83,7 @@ li.repo {
     text-align: center;
   }
   p {
+    min-height: 60px;
     background-color: @sites-repo-bg-color;
     padding: 5px 10px 10px;
     .border-radius(0 0 10px 10px);
@@ -172,8 +92,270 @@ li.repo {
   }
 }
 
-ul.repos {
-  margin: 0;
-  padding: 0;
-  list-style: none none;
+
+// Large Screen Sites styles (Widget)
+// ---------------
+@media screen and (min-width: @screen-sm) {
+  ul.sites {
+    margin: 0;
+    padding: 0 10px;
+    list-style: none none;
+    border-radius: 10px;
+    background: @sites-bg-color;
+    border: 1px solid @sites-bg-color;
+    height: 293px;
+    overflow: hidden;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    padding: 0 10px;
+  }
+
+  li.site {
+    @real-width: 388px;
+    @text-height: 95px;
+    @active-width-percentage: 0.7;
+    @active-width: percentage(@active-width-percentage);
+    @dormant-width: (100% - @active-width) / 5;
+    @calculated-active-width: @active-width-percentage * @real-width;
+
+    width: @dormant-width;
+    height: inherit;
+    display: block;
+    float: left;
+    overflow: hidden;
+    border: 1px solid darken(@sites-bg-color, 15%);
+    border-width: 0 1px 0 0;
+    position: relative;
+    background-color: @site-bg-color;
+
+    &:first-child {
+      border-left-width: 1px;
+    }
+
+    .text {
+      li:before {
+        content: "- ";
+      }
+      height: @text-height;
+      position: absolute;
+      bottom: -@text-height - 10px;
+      .transition(bottom 0.3s);
+      width: @calculated-active-width;
+      background: @sites-text-bg;
+      color: @sites-text-color;
+      pre {
+        font-size: inherit;
+        margin: 0;
+      }
+
+      .col:first-child {
+        width: 40%;
+      }
+      .col {
+        width: 60%;
+      }
+      .row {
+         text-shadow: @brand-text-shadow;
+      }
+      p {
+        padding-right: 5px;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 5px;;
+        list-style-type: none;
+      }
+
+      h3 {
+        margin: 0 0 0.5em;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 8px;
+        background: @sites-header-bg-color;
+        text-align: center;
+        margin-top: -10px;
+        .border-radius(10px 10px 0 0);
+        border: 1px solid @sites-bg-color;
+      }
+    }
+
+    .image {
+      border: 0;
+      display: block;
+      height: 100%;
+      opacity: 0.3;
+      .transition(opacity 0.2s);
+    }
+    .transition(width .5s ease-in-out);
+
+    &:not(.active) {
+      cursor: pointer;
+    }
+
+    &.active, &:hover {
+      .image {
+        opacity: 1;
+      }
+    }
+    &.active {
+      width: @active-width;
+      .text {
+        bottom: 0;
+      }
+    }
+  }
+
+  .current .flash .image {
+    opacity: 0.7;
+  }
+}
+
+@media screen and (max-width: @screen-xs-max) {
+  .col.repos {
+    width: 100%;
+    margin-bottom: 15px;
+    h3 {
+      font-size: 12px;
+    }
+
+    li.repo {
+      width: 32%;
+      margin-left: 2%;
+      margin-bottom: 15px;
+      float: left;
+      &:first-child {
+        margin-left: 0;
+      }
+      p {
+        font-size: 14px;
+        padding: 10px 15px;
+        min-height: 80px;
+      }
+    }
+  }
+
+  .col.sites {
+    width: 100%;
+    h2.heading {
+      text-align: left;
+      i {
+        float: left;
+        margin-right: 0.33em;
+      }
+    }
+  }
+
+  li.site {
+    margin-bottom: 15px;
+    position: relative;
+    padding-top: 36px;
+    .border-radius(10px);
+    border: 1px solid @sites-bg-color;
+    overflow: hidden;
+    font-size: 16px;
+    background-color: @brand-darker;
+    color: #fff;
+    .box-sizing(border-box);
+
+    .small-site(200px);
+    .image {
+      position: absolute;
+      left: 0;
+      border-right: 1px solid @sites-bg-color;
+    }
+
+    p {
+      text-shadow: 0.1em 0.1em 0.2em #661100;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      .clearfix;
+      display: block;
+      margin-bottom: 10px;
+    }
+    li {
+      font-weight: 800;
+      color: @brand-darker;
+      border: 1px solid @brand-primary;
+      float: left;
+      padding: 5px 8px;
+      background-color: @brand-lighter;
+      .border-radius(12px);
+      margin: 0 5px 5px 0;
+      font-size: 12px;
+      text-shadow: 0 0 1em #fff;
+    }
+
+    .row {
+      padding: 10px;
+      margin: 0;
+      width: 100%;
+    }
+
+    .col {
+      float: none;
+      width: 100%;
+    }
+    h3 {
+      height: 36px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0 0 0.5em;
+      font-size: 16px;
+      font-weight: bold;
+      background: @sites-header-bg-color;
+      text-align: center;
+      width: 100%;
+      border-bottom: 1px solid @sites-bg-color;
+
+      pre {
+        padding: 10px 7px 10px;
+        margin: 0;
+      }
+    }
+  }
+
+  ul.sites {
+    margin: ;
+    padding: 0;
+    list-style-type: none;
+  }
+}
+
+@media screen and (max-width: (@screen-xs - 1)) {
+  .col.repos li.repo {
+    width: 100%;
+    margin-left: 0;
+    font-size: 15px;
+    p {
+      padding: 10px 20px;
+      margin: 0;
+    }
+
+    h3 {
+      font-size: 16px;
+    }
+  }
+
+  li.site {
+    .small-site(150px);
+
+    font-size: 13.5px;
+    .row {
+      padding: 7px;
+    }
+    li {
+      padding: 5px;
+      font-size: 11.5px;
+    }
+
+    ul {
+      margin-bottom: 0;
+    }
+  }
 }
