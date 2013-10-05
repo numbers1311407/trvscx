@@ -160,3 +160,19 @@ label.input {
     display: block;
   }
 }
+
+
+@media screen and (max-width: (@screen-xs - 1)) {
+  .col {
+    &.contact-info, &.contact-form {
+      width: 100%;
+    }
+
+    &.contact-info {
+      line-height: 280px;
+    }
+  }
+  #contact-form .btn {
+    float: left;
+  }
+}
