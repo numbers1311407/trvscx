@@ -88,5 +88,28 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-browserify');
 
+  grunt.registerTask("assets", "Deploy rack assets", function() {
+    var done = this.async();
+    var rack = require("./app/middleware/rack");
+
+    var opts = {
+      configFile: __dirname + "/rack.json",
+      provider: "amazon",
+      container: "cdn.trvscx",
+      accessKey: process.env.AWS_KEY,
+      secretKey: process.env.AWS_SECRET
+    }
+    console.log(opts);
+
+    rack.deploy(opts, function (err) {
+      if (err) {
+        console.log(err);
+      }
+      done();
+    });
+  });
+
   grunt.registerTask("dist", ["clean", "copy", "browserify", "less", "uglify"]);
 };
+
+

@@ -22,21 +22,23 @@ app.configure(function () {
 
   app.locals.pretty = isdev;
 
-  app.use(require("./middleware/cachify")(isdev));
+  app.use(require("./middleware/rack"));
 
-  if (isdev) {
-    app.use(require("less-middleware")({
-      paths: ["components"],
-      src: __dirname + '/less',
-      dest: __dirname + "/../public/css",
-      debug: true,
-      prefix: "/css"
-    }))
+  // app.use(require("./middleware/cachify")(isdev));
 
-    var browserify = require("./middleware/browserify");
-    app.use("/js/vendor.js", browserify.vendor);
-    app.use("/js/bundle.js", browserify.bundle);
-  }
+  // if (isdev) {
+  //   app.use(require("less-middleware")({
+  //     paths: ["components"],
+  //     src: __dirname + '/less',
+  //     dest: __dirname + "/../public/css",
+  //     debug: true,
+  //     prefix: "/css"
+  //   }))
+
+  //   var browserify = require("./middleware/browserify");
+  //   app.use("/js/vendor.js", browserify.vendor);
+  //   app.use("/js/bundle.js", browserify.bundle);
+  // }
 
   var crypto = require("crypto")
     , hash = crypto.createHash("md5")
