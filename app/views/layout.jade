@@ -7,8 +7,9 @@ html.no-js(lang="en")
     link(href='http://fonts.googleapis.com/css?family=Oswald|Yanone+Kaffeesatz|Oxygen|Play|Fjalla+One', rel='stylesheet', type='text/css')
     | !{cachify_css('/assets/css/screen.css')}
     script(type="text/javascript", src="/js/modernizr.js")
-    | !{cachify_js('/assets/js/vendor.js')}
-    | !{cachify_js('/assets/js/bundle.js')}
   body
     block content
+    block bottom
+      | !{cachify_js('/assets/js/vendor.js')}
+      | !{cachify_js('/assets/js/bundle.js')}
     include includes/ga
