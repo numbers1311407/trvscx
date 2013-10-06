@@ -20,7 +20,7 @@ app.configure(function () {
   app.use(express.logger('dev'));
   app.use(express.compress());
 
-  app.locals.pretty = true //isdev;
+  app.locals.pretty = isdev;
 
   app.use(require("./middleware/cachify")(isdev));
 
