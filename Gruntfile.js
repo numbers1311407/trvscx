@@ -42,8 +42,7 @@ module.exports = function(grunt) {
     less: {
       dist: {
         options: {
-          paths: ["components", "node_modules"],
-          yuicompress: true
+          paths: ["components", "node_modules"]
         },
         files: {
           "public/assets/css/screen.css": "app/less/screen.less"
