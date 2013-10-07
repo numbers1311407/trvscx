@@ -70,6 +70,14 @@ module.exports = function(grunt) {
           src: "*",
           dest: "public/assets/font/"
         }]
+      },
+      staticjs: {
+        files: [{
+          expand: true,
+          cwd: "public/js/",
+          src: "*",
+          dest: "public/assets/js/"
+        }]
       }
     },
 
