@@ -59,6 +59,7 @@ app.configure(function () {
 
 app.set('author', pkg.author.name);
 app.set('email', pkg.author.email);
+app.set('description', pkg.description);
 
 app.configure('development', function () {
   app.use(express.errorHandler())
