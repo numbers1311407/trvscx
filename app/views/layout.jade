@@ -3,6 +3,8 @@ html.no-js(lang="en")
   head
     include includes/meta
     link(href='http://fonts.googleapis.com/css?family=Oswald|Yanone+Kaffeesatz|Oxygen|Play|Fjalla+One', rel='stylesheet', type='text/css')
+    script.
+      (function (el) {el.className = el.className+" loading"}(document.documentElement));
     | !{cachify_css('/assets/css/screen.css')}
     script(type="text/javascript", src="/js/modernizr.js")
   body

@@ -37,9 +37,8 @@ html {
 }
 
 html.loading {
-  // everything is hidden on loading to avoid "layout FOUT" (this class 
-  // is added  and removed with javascript so... while not ideal, it
-  // should work)
+  // Class added via javascript on load to hide FOUC before the styles
+  // are loaded and the script runs to display the initial "page"
   visibility: hidden;
 }
 

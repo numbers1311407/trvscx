@@ -10,9 +10,6 @@ require("bootstrap-transition");
 require("tooltipster");
 
 
-$("html").addClass("loading");
-
-
 var Router = Backbone.Router.extend({
   initialize: function () {
     this.$nav = new views.Nav({el: "nav"});
