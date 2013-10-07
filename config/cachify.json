@@ -1,5 +1,8 @@
 {
   "assets": {
+    "/assets/js/modernizr.js": [
+      "/js/modernizr.js"
+    ],
     "/assets/css/screen.css": [
       "/css/screen.css"
     ],
