@@ -5,11 +5,11 @@ html.no-js(lang="en")
     meta(charset="utf8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(href='http://fonts.googleapis.com/css?family=Oswald|Yanone+Kaffeesatz|Oxygen|Play|Fjalla+One', rel='stylesheet', type='text/css')
-    | !{cachify_css('/assets/css/screen.css')}
-    script(type="text/javascript", src="/js/modernizr.js")
+    != CDN('/assets/css/screen.css')
+    != CDN('/js/modernizr.js')
+    != CDN('/assets/js/vendor.js')
+    != CDN('/assets/js/bundle.js')
   body
     block content
     block bottom
-      | !{cachify_js('/assets/js/vendor.js')}
-      | !{cachify_js('/assets/js/bundle.js')}
     include includes/ga
