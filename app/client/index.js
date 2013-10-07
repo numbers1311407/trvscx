@@ -7,7 +7,7 @@ Backbone.$ = $;
 
 // require non-commonjs plugins
 require("bootstrap-transition");
-require("tooltipster");
+require("tipsy");
 
 
 var Router = Backbone.Router.extend({

@@ -1,14 +1,63 @@
-.site-tooltip {
-	border-radius: 5px; 
-	border: 1px solid @tooltip-border-color;
-	background: @tooltip-bg;
-	color: @tooltip-color;
+.tipsy { 
+  padding: 5px; 
+  font-size: 13px; 
+	line-height: 18px;
+  opacity: 0.9; 
+  filter: alpha(opacity=90); 
+  position: relative;
 }
 
-/* Use this next selector to style things like font-size and line-height: */
-.site-tooltip .tooltipster-content {
-	font-family: @font-family-base;
-	font-size: 14px;
-	line-height: 21px;
-	padding: 15px 15px;
+.tipsy-inner { 
+  background: @tooltip-bg;
+  border: 1px solid @tooltip-border-color;
+  padding: 10px;
+  color: @tooltip-color;
+  max-width: 200px; 
+  .border-radius(3px);
 }
+
+.tipsy-north { background-position: top center; }
+.tipsy-south { background-position: bottom center; }
+.tipsy-east { background-position: right center; }
+.tipsy-west { background-position: left center; }
+
+
+// Triangles
+//------------------------
+
+// base
+.tipsy:before, .tipsy:after {
+	content: ' ';
+	height: 0;
+	position: absolute;
+	width: 0;
+	border: 10px solid transparent;
+	left: 50%;
+  margin-left: -5px;
+  // prevent mouseover from hiding the tooltip
+  pointer-events: none;
+}
+
+// first lay down a border colored triangle 
+.tipsy-north:before {
+	border-bottom-color: @tooltip-border-color;
+	top: -15px;
+}
+
+.tipsy-south:before {
+	border-top-color: @tooltip-border-color;
+  bottom: -15px;
+}
+
+
+// then draw a bg color "fill" triangle over it to approximate a border
+.tipsy-north:after {
+	border-bottom-color: @tooltip-bg;
+	top: -14px;
+}
+
+.tipsy-south:after {
+	border-top-color: @tooltip-bg;
+  bottom: -14px;
+}
+

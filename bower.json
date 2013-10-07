@@ -5,6 +5,6 @@
     "jquery": "~2.0.3",
     "bootstrap": "~3.0.0",
     "font-awesome": "~3.2.1",
-    "tooltipster": "~2.1.4"
+    "tipsy": "~0.1.7"
   }
 }

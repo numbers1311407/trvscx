@@ -4,11 +4,6 @@ var Backbone = require("backbone")
 module.exports = Face.extend({
   el: "#resume-face",
 
-  options: {
-    tooltipWidth: 300,
-    tooltipTheme: "site-tooltip"
-  },
-
   events: {
     "mouseenter .bar": "onMouseEnter",
     "mouseleave .bar": "onMouseLeave"
@@ -17,27 +12,20 @@ module.exports = Face.extend({
   initialize: function (options) {
     Face.prototype.initialize.call(this, options);
 
-    this.$('.tooltip').tooltipster({
-      maxWidth: this.options.tooltipWidth,
-      theme: this.options.tooltipTheme
-      //functionAfter: this.onTooltipClose
-    });
+    this.$('.tooltip').tipsy({
+      gravity: $.fn.tipsy.autoNS,
+      title: function () { 
+        // return this.getAttribute('original-title').toUpperCase(); 
+        return $(".details", this).html();
+      } 
+    })
   },
 
   onMouseEnter: function (e) {
-    var $bar = $(e.target);
-    var html = $bar.find(".details").html();
-    $bar.addClass("bar-active").tooltipster("update", html);
+    $(e.target).addClass("bar-active");
   },
 
   onMouseLeave: function (e) {
     $(e.target).removeClass("bar-active");
   }
-
-  // This works but doesn't look great as the progress bar doesn't fade
-  // out, making it look like the effect is lagged, not delayed.
-  // TODO animate out progress bar animation
-  // onTooltipClose: function (tip) {
-  //   $(tip.context).removeClass("bar-active");
-  // }
 });

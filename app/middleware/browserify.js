@@ -19,8 +19,8 @@ exports.shims = {
     depends: {jquery: "jQuery"}
   },
 
-  "tooltipster": {
-    path: require.resolve("../../components/tooltipster/js/jquery.tooltipster"),
+  "tipsy": {
+    path: require.resolve("../../components/tipsy/src/javascripts/jquery.tipsy"),
     exports: null,
     depends: {jquery: "jQuery"}
   }
