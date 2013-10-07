@@ -57,14 +57,24 @@ app.configure(function () {
 })
 
 
+/**
+ * Pass some package vars on to settings for templates
+ */
+app.set('name', pkg.name);
+app.set('title', pkg.name);
 app.set('author', pkg.author.name);
 app.set('email', pkg.author.email);
+app.set('profile', pkg.author.url);
 app.set('description', pkg.description);
+app.set('url', "http://"+pkg.name);
 
 app.configure('development', function () {
   app.use(express.errorHandler())
 })
 
+/**
+ * Mailer setup and contact form route
+ */
 var mailer = require("nodemailer");
 var transport = mailer.createTransport("SMTP", {
   host: "email-smtp.us-east-1.amazonaws.com",
@@ -93,6 +103,10 @@ app.post("/contact", function (req, res) {
   })
 })
 
+
+/**
+ * Main app route
+ */
 app.get(/^\/(work|contact|resume)?$/, function (req, res) {
-  res.render("index", {title: pkg.name});
+  res.render("index");
 });
