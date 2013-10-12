@@ -17,6 +17,12 @@
   .gradient-with-layer(@card-overlay-start; @card-overlay-end; @card-overlay-bg);
 }
 
+html.no-csstransforms3d .face {
+  padding: 80px 80px;
+  width: 570px + 80px * 2;
+  margin: 0 auto;
+}
+
 @media screen and (max-width: @screen-sm-max) {
   .face {
     padding: @face-sm-vertical-padding @face-padding;

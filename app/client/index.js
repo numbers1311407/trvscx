@@ -2,6 +2,12 @@ var $ = require("jquery")
   , Backbone = require("backbone")
   , views = require("./views")
 
+
+if (!Modernizr.csstransforms3d) {
+  $('html').removeClass("loading");
+}
+
+
 // Assign $ to Backbone
 Backbone.$ = $;
 

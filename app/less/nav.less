@@ -6,98 +6,7 @@ nav {
   }
 }
 
-@media screen and (min-width: @screen-md) {
-  nav {
-    .cardbox;
-  }
-
-  li.topLeft, 
-  li.topRight {
-    a.nav-link {
-      top: -80px;
-      padding-top: 30px;
-    }
-  }
-
-  li.bottomLeft, 
-  li.bottomRight {
-    a.nav-link {
-      bottom: -80px;
-    }
-  }
-
-  li.topLeft, 
-  li.bottomLeft {
-    a.nav-link {
-      left: 0;
-    }
-  }
-
-  li.topRight, 
-  li.bottomRight {
-    a.nav-link {
-      text-align: right;
-      right: 0;
-    }
-  }
-
-  a.nav-link {
-    z-index: 100;
-    display: block;
-    position: absolute;
-    height: 80px;
-    text-decoration: none !important;
-    .transition(padding .4s ease);
-    &:hover .nav-link {
-      font-size: 30px;
-    }
-  }
-
-  .topRight, .topLeft {
-    a.nav-link:hover {
-      padding-top: 15px;
-    }
-  }
-
-  .bottomRight, .bottomLeft {
-    a.nav-link:hover {
-      padding-top: 15px;
-    }
-  }
-
-  li.current {
-    span.nav-link {
-      font-size: 56px !important;
-      color: @nav-current-color;
-      cursor: default;
-    }
-
-    &.topRight, &.topLeft {
-      a.nav-link {
-        padding-top: 15px;
-      }
-    }
-
-    &.bottomRight, &.bottomLeft {
-      a.nav-link {
-        padding-top: 10px;
-      }
-    }
-  }
-
-  span.nav-link {
-    opacity: 1;
-    display: block;
-    color: @nav-color;
-    font-size: 20px;
-    line-height: 50px;
-    .user-select(none);
-    .transition(all 0.35s ease);
-    .backface-visibility(hidden);
-  }
-}
-
-@media screen and (max-width: @screen-sm-max) {
+.small-screen-or-no-transforms() {
   .face:first-child {
     margin-top: 57px;
   }
@@ -148,6 +57,112 @@ nav {
       #gradient > .vertical(#f6f6f6, #e8e8e8, 40%);
       border: 1px solid #e3e3e3;
     }
+  }
+}
+
+// large screens with 3d
+@media screen and (min-width: @screen-md) {
+  html.csstransforms3d {
+    nav {
+      .cardbox;
+    }
+
+    li.topLeft, 
+    li.topRight {
+      a.nav-link {
+        top: -80px;
+        padding-top: 30px;
+      }
+    }
+
+    li.bottomLeft, 
+    li.bottomRight {
+      a.nav-link {
+        bottom: -80px;
+      }
+    }
+
+    li.topLeft, 
+    li.bottomLeft {
+      a.nav-link {
+        left: 0;
+      }
+    }
+
+    li.topRight, 
+    li.bottomRight {
+      a.nav-link {
+        text-align: right;
+        right: 0;
+      }
+    }
+
+    a.nav-link {
+      z-index: 100;
+      display: block;
+      position: absolute;
+      height: 80px;
+      text-decoration: none !important;
+      .transition(padding .4s ease);
+      &:hover .nav-link {
+        font-size: 30px;
+      }
+    }
+
+    .topRight, .topLeft {
+      a.nav-link:hover {
+        padding-top: 15px;
+      }
+    }
+
+    .bottomRight, .bottomLeft {
+      a.nav-link:hover {
+        padding-top: 15px;
+      }
+    }
+
+    li.current {
+      span.nav-link {
+        font-size: 56px !important;
+        color: @nav-current-color;
+        cursor: default;
+      }
+
+      &.topRight, &.topLeft {
+        a.nav-link {
+          padding-top: 15px;
+        }
+      }
+
+      &.bottomRight, &.bottomLeft {
+        a.nav-link {
+          padding-top: 10px;
+        }
+      }
+    }
+
+    span.nav-link {
+      opacity: 1;
+      display: block;
+      color: @nav-color;
+      font-size: 20px;
+      line-height: 50px;
+      .user-select(none);
+      .transition(all 0.35s ease);
+      .backface-visibility(hidden);
+    }
+  }
+}
+
+html.no-csstransforms3d {
+  .small-screen-or-no-transforms();
+}
+
+// for small screens that have 3d, add the small styles (large screens
+// without 3d already have them)
+@media screen and (max-width: @screen-sm-max) {
+  html.csstransforms3d {
+    .small-screen-or-no-transforms();
   }
 }
 
