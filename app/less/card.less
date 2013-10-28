@@ -13,7 +13,6 @@
   border: 0;
   overflow: hidden;
   // .box-shadow(0 0 5px 3px rgba(0, 0, 0, 0.1));
-
   .gradient-with-layer(@card-overlay-start; @card-overlay-end; @card-overlay-bg);
 }
 
@@ -80,45 +79,47 @@ html.no-csstransforms3d .face {
       .transform(rotate3d(0, 0, 0, 0deg));
     }
 
-    .card .topRight {
-      .transform(rotate3d(-6.5, -4, 0, 179deg));
-    }
-
-    .topRightHover .down {
-      .transform(rotate3d(-6.5, -4, 0, 7deg));
-      .box-shadow(10px -10px 20px rgba(0,0,0,0.1));
-    }
-
-    .card .bottomRight {
-      .transform(rotate3d(6.5, -4, 0, 179deg));
-    }
-
-    .bottomRightHover .down {
-      .transform(rotate3d(6.5, -4, 0, 7deg));
-      .box-shadow(10px 10px 20px rgba(0,0,0,0.1));
-    }
+    @v1: unit(@card-width);
+    @v2: unit(@card-height);
 
     .card .topLeft {
-      .transform(rotate3d(-6, 4, 0, 179deg));
+      .transform(rotate3d(-@v1, @v2, 0, 180deg));
     }
 
-    .topLeftHover .down {
-      .transform(rotate3d(-6, 4, 0, 7deg));
-      .box-shadow(-10px -10px 20px rgba(0,0,0,0.1));
+    .card .topRight {
+      .transform(rotate3d(-@v1, -@v2, 0, 180deg));
     }
 
     .card .bottomLeft {
-      .transform(rotate3d(6.5, 4, 0, 179deg));
+      .transform(rotate3d(@v1, @v2, 0, 180deg));
+    }
+
+    .card .bottomRight {
+      .transform(rotate3d(@v1, -@v2, 0, 180deg));
+    }
+
+    .topLeftHover .down {
+      .transform(rotate3d(-@v1, @v2, 0, 5deg));
+      .box-shadow(-10px -10px 20px rgba(0,0,0,0.1));
+    }
+
+    .topRightHover .down {
+      .transform(rotate3d(-@v1, -@v2, 0, 5deg));
+      .box-shadow(10px -10px 20px rgba(0,0,0,0.1));
     }
 
     .bottomLeftHover .down {
-      .transform(rotate3d(6.5, 4, 0, 7deg));
+      .transform(rotate3d(@v1, @v2, 0, 5deg));
       .box-shadow(-10px 10px 20px rgba(0,0,0,0.1));
+    }
+
+    .bottomRightHover .down {
+      .transform(rotate3d(@v1, -@v2, 0, 5deg));
+      .box-shadow(10px 10px 20px rgba(0,0,0,0.1));
     }
 
     .down {
       .transition-duration(0.4s) !important;
     }
   }
-
 }
